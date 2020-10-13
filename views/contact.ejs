@@ -1,0 +1,109 @@
+<html>
+      <head>
+        <!--links for font awesome and external style sheet-->
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="assets/style.css" rel="stylesheet" type="text/css" />
+
+      </head>
+      <body>
+        <style>
+ /*internalo style sheet*/
+input,textarea{
+               
+               border:0px;
+               border-bottom:2px solid black;
+               width:280px;
+               font-size: 25px;
+              
+           }
+          
+        </style>
+<!-- Header Of each page with social icons at right-->
+<div class="header-container">
+
+  <div >
+    <span style="font-size:30px;cursor:pointer" onclick="openNav()">
+      &#9776;
+    </span>
+    <div class="social-icons">
+      <a href="#" class="fa fa-facebook"></a>
+    <a href="#" class="fa fa-twitter"></a>
+    <a href="#" class="fa fa-linkedin"></a>
+    <a href="#" class="fa fa-instagram"></a>
+    </div>
+  </div>
+
+  
+</div>
+    
+  <!--Side menu bar which opens and closes on click .on opening it contains following sidebars-->
+<div id="MySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <a href="main">Home </a>
+  <a  href="profile">Profile </a>  
+    <a  href="applyleave">Apply Leave</a>  
+   
+    <a href="#">Settings</a>
+    <a href="contact">Contact Us</a>
+    <a href="logout">Logout</a>       
+ </div>
+<div class="main"> 
+  <div style="text-align: center;">
+     <b style="font-size:2em;">Contact Us<br> Have any questions?We'd love to hear from you.</b>
+  </div>
+   
+    <div class="contact">
+  
+      <div class="contact-container card1"> 
+        <div class="box1"></div>
+      <h2> Help and supoport </h2> <br>
+       Our support team is <br>
+       spread across the globe to <br>
+       give you  answers that <br><br><br><br><br>
+  
+       <button  class="button1"  type="submit">Contact us</button></br></br>
+      </div>
+       <div class="contact-container card1" > 
+        <div class="box2"></div>
+        <h2> Sales </h2> <br>
+        Get in touch with our sales <br>
+        team to see how we <br>can work together.<br><br><br><br><br>
+  
+        
+        <button  class="button1"  type="submit">Visit Sales Page</button></br></br>
+       </div>
+       <!--report an issue or contact after submitting form.form is currently diabled and will be used in future work-->
+       <div class="report"> 
+        <div class="box3"></div>
+       <br> <form>
+        <b>First Name :</b>&emsp;&emsp;&emsp;&emsp;&emsp;<input type="text" id="firstname"   name="Fname" value="" placeholder="John" required><firstname style="color:red"></firstname></br></br>
+        <b>Last Name:</b> &emsp;&emsp;&emsp;&emsp; &emsp;<input type="text" id="lastname"  name="Lname" value="" placeholder="Doe" required><lastname style="color:red"></lastname></br></br>
+        &emsp;<b> Email    </b>:&emsp;&nbsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;  <input name="email"   id="email"  value="" type="email" placeholder="xyz@gmail.com" required>&emsp;<email style="color:red"></email></br></br>
+   <b>Message: </b> &emsp;&nbsp;&emsp;&nbsp;&emsp;&emsp;&emsp;&emsp;<textarea></textarea><br><br>
+         <button  class="button1"  type="submit">Contact us</button></br></br>
+        </div>
+  </form>
+       </div>
+  
+    </div>
+</div>
+
+
+<script>
+  /*open the side menu bar*/
+    function openNav() {
+    document.getElementById("MySidenav").style.width = "250px";
+     }
+  
+  //close the side menu bar
+  function closeNav() {
+    document.getElementById("MySidenav").style.width = "0";
+  
+  }
+</script>
+
+      </body>
+
+
+
+</html>

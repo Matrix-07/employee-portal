@@ -1,0 +1,146 @@
+
+<!--this template used in admin side.it will getall the employee stored in database-->
+<html>
+<head>
+<!--links for font awesome and external style sheet-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="assets/style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+
+    <style>
+       
+          /*internal style sheet*/
+        table,th,tr,td{
+       
+            border-collapse: collapse;
+            border:2px solid black
+        }
+        table{
+            position: relative;
+        top:30px;
+        }
+    </style>
+
+ <!-- Header Of each page with social icons at right-->
+<div class="header-container">
+
+    <div>
+      <span style="font-size:30px;cursor:pointer" onclick="openNav()">
+        &#9776;
+      </span>
+      <div class="social-icons">
+        <a href="#" class="fa fa-facebook"></a>
+      <a href="#" class="fa fa-twitter"></a>
+      <a href="#" class="fa fa-linkedin"></a>
+      <a href="#" class="fa fa-instagram"></a>
+      </div>
+    </div>
+
+    
+  </div>
+     <!--Side menu bar which opens and closes on click .on opening it contains following sidebars-->
+
+  <div id="MySidenav" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <a href="admin_page">Home </a>
+    
+    <a href="getemployees">Get Employees</a>
+    <a href="addemployee">Add Employee</a>
+    <a href="getleave">Get leaves</a>
+       <a href="searchemployee">Search Employee</a>
+    <a href="sendmail">Sendmail</a> 
+    <a href="temp_mail">Send Temprorary Email</a> 
+    <a href="logout">Logout</a>
+  </div>
+  
+ 
+  <div class="main">
+    <b style="font-size:2em;text-align:center;"> Employees Details</b>
+<!--table to display all the emploee with values-->
+    <table style="text-align:center">
+   
+
+    <tr>
+        <th>
+            Email id
+                    </th>
+                    <th>
+                        Fname
+                                </th>
+                                <th>
+                                    Lname
+                                            </th>
+        <th>
+Birthdate
+        </th>
+        <th>
+Country
+        </th>
+        <th>
+Mobilenumber
+        </th>
+        <th>
+            State
+        </th>
+        <th>
+            Join Date
+        </th>
+        <th>
+            Department Name
+        </th>
+
+    </tr>
+<!--for lop in ejs template to ga all data-->
+
+    <%for(var i=0;i<data.length;i++){%>
+        <tr>
+
+            <td>
+                <%=data[i].email%>
+                </td>
+            <td>
+            <%=data[i].Fname%>
+            </td>
+            <td>
+            <%=data[i].country%>
+            </td>
+            <td>
+            <%=data[i].birthdate%>
+            </td>
+            <td>
+                <%=data[i].country%>
+                </td>
+            <td>
+            <%=data[i].mobilenumber%>
+            </td>
+            <td>
+                <%=data[i].state%>
+            </td>
+            <td>
+                <%=data[i].joindate%>
+            </td>
+            <td>
+                <%=data[i].department_name%>
+            </td>
+           
+            
+                </tr>
+    
+    <%}%>
+    
+</table>
+</div>
+    <script>
+        /*open the side menu bar*/
+ function openNav() {
+      document.getElementById("MySidenav").style.width = "250px";
+    }
+ /*close the side menu bar*/
+    function closeNav() {
+      document.getElementById("MySidenav").style.width = "0";
+    }
+    </script>
+</body>
+</html>

@@ -1,0 +1,162 @@
+
+<!--this page is only visible for admin.Admin wil check all applied leave and will decide whether to approve or rejct the pending leave-->
+<html>
+    <head>
+        <!--links for font awesome and external style sheet-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="assets/style.css" rel="stylesheet" type="text/css" />
+        
+    </head>
+    <style>
+      /*internal style sheet*/
+        table,th,td{
+            border:2px solid black;
+            border-collapse: collapse;
+          
+ 
+        }
+       
+     
+    </style>
+
+<body>
+
+    <!-- Header Of each page with social icons at right-->
+
+  <div class="header-container">
+
+    <div>
+      <span style="font-size:30px;cursor:pointer" onclick="openNav()">
+        &#9776;
+      </span>
+      <div class="social-icons">
+        <a href="#" class="fa fa-facebook"></a>
+      <a href="#" class="fa fa-twitter"></a>
+      <a href="#" class="fa fa-linkedin"></a>
+      <a href="#" class="fa fa-instagram"></a>
+      </div>
+    </div>
+
+    
+  </div>
+
+  <!--Side menu bar which opens and closes on click .on opening it contains following sidebars-->
+
+  <div id="MySidenav" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <a href="admin_page">Home </a>
+    
+    <a href="getemployees">Get Employees</a>
+    <a href="addemployee">Add Employee</a>
+    <a href="getleave">Get leaves</a>
+    <a href="searchemployee">Search Employee</a>
+    <a href="sendmail">Sendmail</a> 
+    <a href="temp_mail">Send Temprorary Email</a> 
+    
+    <a href="logout">Logout</a>
+  </div>
+  
+    <!--this table display all applied leaves.it atakes data from database-->
+    <div class="main">
+<table style="text-align:center">
+    <b style="text-align:center;font-size: 2em;"> All Applied Leaves</b></br></br>
+
+    <tr>
+        <th>
+            Email id
+                    </th>
+        <th>
+Department Name
+        </th>
+        <th>
+Department Id
+        </th>
+        <th>
+From date
+        </th>
+        <th>
+To date
+        </th>
+        <th>
+            Leave Type
+                </th>
+        <th>
+            Leave Status
+        </th>
+        <th>
+        Change Leave Status
+        </th>
+    </tr>
+
+<!--ejs function which go through all data and disply respective columnb values in table-->
+    <%for(var i=0;i<data.length;i++){%>
+        <tr>
+
+            <td>
+                <%=data[i].email%>
+                </td>
+            <td>
+            <%=data[i].department_name%>
+            </td>
+            <td>
+            <%=data[i].department_id%>
+            </td>
+            <td>
+            <%=data[i].fromdate%>
+            </td>
+            <td>
+            <%=data[i].todate%>
+            </td>
+            <td>
+            <%=data[i].leavetype%>
+            </td>
+            <td>
+                <%=data[i].leavestatus%>
+            </td>
+            <td>
+              <!--this table column admin will either reject or approve the applied leave of employees and the status will be sent to database-->
+                <form method="post" action="approved">
+                    <input name="email" value="<%=data[i].email%>" style="display:none">
+                    <select  onclick="checkdleavestataus()" name="leavestatus" id="department-selection"  value=""  size="1">
+                        <option name="approveleave">Approved</option>
+                        <option name="approveleave">Rejected</option>
+                    
+                    </select></br></br>
+                    <button  class="signup-button" type="submit" >Change status</button>
+                </form>
+                
+            </td>
+                </tr>
+    
+    <%}%>
+    
+</table>
+</div>
+
+
+<script>
+  /*values selected in leave select tag will to select tag and then it eill be sent to data base after form submission*/
+    function leavestatus(){
+        
+        var d=document.getElementById("department-selection");
+        var f=document.getElementsByName("approveleave");
+        var e=d.options[d.selectedIndex].text;
+        f[0].value=e;
+        
+        i=  f[0].value();
+        
+        document.getElementById("department-selection").value=i;
+       
+    }
+     //open the side menu bar
+    function openNav() {
+      document.getElementById("MySidenav").style.width = "250px";
+    }
+ //close the side menu bar
+    function closeNav() {
+      document.getElementById("MySidenav").style.width = "0";
+    }
+
+</script>
+</body>
+</html>

@@ -1,0 +1,222 @@
+
+<!--this is a new leave application form.-->
+<html>
+    <head>
+        <meta charset="utf=8">
+        </meta>
+      <!--links for font awesome and external style sheet-->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href="assets/style.css" rel="stylesheet" type="text/css" />
+      </head>
+
+    <body>
+      
+       <!--template variables set to null initially--->
+        <% 
+        var Fname="";
+        var Lname="";
+        var department_name="";
+        var department_id="";
+        var todate="";
+        var fromdate="";
+        var leavetype="";
+        var remarks="";
+        var leavestatus="pending"
+
+          %>
+
+          
+
+    <!---if the length is greater than 0 which means alraed leave has been applied.so it will add its value-->
+        <% if(length>0){%>
+      <%
+           Fname=data.Fname;
+            Lname=data.Lname;
+             department_name=data.department_name;
+          department_id=data.department_id;
+               leavetype=data.leavetype;
+           fromdate=data.fromdate;
+             todate=data.todate;
+             remarks=data.remarks;
+             leavestatus=data.leavestatus
+             %>
+            
+       <% }%>
+        <!-- Header Of each page with social icons at right-->
+       <div class="header-container">
+
+        <div >
+          <span style="font-size:30px;cursor:pointer" onclick="openNav()">
+            &#9776;
+          </span>
+          <div class="social-icons">
+            <a href="#" class="fa fa-facebook"></a>
+          <a href="#" class="fa fa-twitter"></a>
+          <a href="#" class="fa fa-linkedin"></a>
+          <a href="#" class="fa fa-instagram"></a>
+          </div>
+        </div>
+   <!--Side menu bar which opens and closes on click .on opening it contains following sidebars-->
+        <div id="MySidenav" class="sidenav">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <a href="main">Home </a>
+            <a href="profile">Profile </a>
+            <a href="applyleave">Apply Leave</a>
+            <a href="#">Settings</a>
+            <a href="contact">Contact</a>
+            <a href="logout">Logout</a>
+            
+          </div>
+        <!--
+          There are two div idss namel previous leave and  leaveform.
+         1)if leaves are already present whichh means length>0 then previous leave will be displayed
+          else
+          2)new leave form div will be displaed
+  -->
+      </div>
+      <div class="main">
+        <div  class="leaveform-box" id="previousleave">
+            <hr>
+            <h1 style="text-align:center"> Previously Applied Leaves</h1>
+            <hr>
+            <!--table to diaplay data values-->
+           <h1> <table id="table">
+    
+                <tr>
+            <th>Fname</th>
+            <th>Lname</th>
+            <th>Department_name</th>
+            <th>Department_id</th>
+            <th>Leave Applied Type</th>
+            <th>Leave From Date</th>
+            <th>Leave To date</th>
+            <th>Remarks</th>
+            <th>Leave Status</th>
+            <th>Modify Leave</th>
+            
+            
+                </tr>
+                <tr>
+            <td>
+            <%=Fname%>
+            </td>
+            <td>
+                <%=Lname%>
+            </td>
+            <td>
+                <%=department_name%>
+            </td>
+            <td>
+                <%=department_id%>
+            </td>
+            <td>
+               <%=leavetype%>
+            </td>
+           
+            <td>
+             <%=fromdate%>
+             </td>
+             <td>
+                <%=todate%>
+             </td>
+             <td>
+                <%=remarks%>
+             </td>
+             <td>
+          <h2 style="color:red"><%=leavestatus%></h2>      
+            </td>
+            <td>
+                <a href="editleave?" >Edit</a> 
+                <a  href="deleteleave" id="deleteleave" onclick="confirm_delete()">Delete</a>
+             </td>
+                </tr>
+            </table></h1>
+            <br>
+            <br>
+            <br>
+         
+        </div>
+
+      
+        
+    <div id="leaveform">
+        &nbsp;&emsp;
+        <div class="leaveform-box">
+            <hr ><b style="color:black">New leave application Form</b><hr>
+            
+            <form  method="post" action="leavestatus"><br><br>
+                
+               From date:<input class="leave-border" type="date" required name="fromdate" required value=""><br><br><br>
+              
+              To date:&nbsp;&emsp;<input class="leave-border" type="date" required name="todate" required value=""><br><br><br>
+                
+                Leave type:<select class="leave-border" onclick="checkleave()"  required name="leavetype" id="leave-type"  value="" required size="1">
+                    <option name="leave">Earned Leave</option>
+                    <option name="leave">Sick Leave</option>
+                    <option name="leave">Casual Leave</option>
+                    
+                </select><br><br><br>
+               
+    Remarks:&emsp;<textarea class="leave-border"  required cols="100" name="remarks" value=""></textarea>
+    <br><br><br>
+    &nbsp;&emsp;&nbsp;&emsp;&nbsp;&emsp;&nbsp;&emsp;   <button  class="button1" type="submit">Submit Leave Request</button><br><br><br>
+                
+
+        </div>
+        
+        
+        </div>
+        <script>
+            var k;
+              function checkleave(){
+       
+                let get_leave_type=document.getElementById("leave-type");
+        let selected_leavetype=get_leave_type.options[get_leave_type.selectedIndex].text;
+       
+        
+        get_leave_type.setAttribute("value",selected_leavetype);
+        
+       
+    }
+    /*decides whwhich div id will be diapled based on length and ther one will be made to none*/
+
+    if(parseInt("<%=length%>")>0){
+let disply_new_leaveform=document.getElementById("leaveform");
+disply_new_leaveform.style.display="none";
+}
+else{
+    let display_prev_leave=document.getElementById("previousleave");
+display_prev_leave.style.display="none";
+}
+
+//remove last rows or column if leave approved or rejected so that employee cannot edit or delete leave 
+if("<%=leavestatus%>"=="Rejected" || "<%=leavestatus%>"=="Approved"){
+var allrows=document.getElementById("table").rows;
+for( var i=0; i<allrows.length;i++){
+    allrows[i].deleteCell(-1);
+}
+}
+/*open side menu bar*/
+function openNav() {
+      document.getElementById("MySidenav").style.width = "250px";
+    }
+
+/*close side menu bar*/
+    function closeNav() {
+      document.getElementById("MySidenav").style.width = "0";
+    }
+    /*if user wants to delete leave confirm box will be displayed and if yes then it will be deleteed from databse*/
+    function confirm_delete()
+    {
+if(!confirm("are you sure you want to delete this")){
+    var deleteleave=document.getElementById("deleteleave");
+    deleteleave.setAttribute("href","/applyleave");
+}
+    }
+
+        </script>
+
+    </body>
+
+
+</html>

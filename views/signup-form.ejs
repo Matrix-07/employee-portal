@@ -1,0 +1,291 @@
+<html>
+
+<head>
+    <!--links for font awesome and external style sheet-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="assets/style.css" rel="stylesheet" type="text/css" />
+
+</head>
+
+<body>
+    <style>
+        /*internal style sheet*/
+        .x {
+            position: relative;
+            top: 40px;
+        }
+
+
+        input,
+        select {
+
+            border: 0px;
+            border-bottom: 2px solid black;
+            width: 280px;
+            font-size: 25px;
+
+        }
+    </style>
+    <!-- Header Of each page with social icons at right-->
+    <div class="header-container">
+
+        <div>
+            <span style="font-size:30px;cursor:pointer" onclick="openNav()">
+                &#9776;
+            </span>
+            <div class="social-icons">
+                <a href="#" class="fa fa-facebook"></a>
+                <a href="#" class="fa fa-twitter"></a>
+                <a href="#" class="fa fa-linkedin"></a>
+                <a href="#" class="fa fa-instagram"></a>
+            </div>
+        </div>
+    </div>
+    <!--Side menu bar which opens and closes on click.on opening it contains following sidebars-->
+    <div id="MySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="admin_page">Home </a>
+
+        <a href="getemployees">Get Employees</a>
+        <a href="addemployee">Add Employee</a>
+        <a href="getleave">Get leaves</a>
+        <a href="sendmail">Sendmail</a>
+        <a href="temp_mail">Send Temprorary Email</a> 
+        <a href="searchemployee">Search Employee</a>
+        <a href="logout">Logout</a>
+    </div>
+<!--Sign up form to rigister new employee with proper css-->
+    <div class="profile-container">
+        <form method="get" action="/">
+
+            <%message=""%><!--his message displays if there is an error in password or email after signup and 
+                reports an error after validating form-->
+
+            <div class="profile-font x">
+
+                First Name :&emsp;&emsp;&emsp;&emsp;&emsp;<input type="text" id="firstname" name="Fname" value=""
+                    placeholder="John" required>
+                <firstname style="color:red"></firstname></br></br>
+                Last Name: &emsp;&emsp;&emsp;&emsp; &emsp;<input type="text" id="lastname" name="Lname" value=""
+                    placeholder="Doe" required>
+                <lastname style="color:red"></lastname></br></br>
+                Email :&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; <input name="email" id="email" value="" type="email"
+                    placeholder="xyz@gmail.com" required>&emsp;<email style="color:red"></email></br></br>
+                Birth Date:&nbsp;&nbsp;&emsp; &emsp;&emsp;&emsp;&emsp;<input type="date" class="date-width "
+                    id="birthday" placeholder="birthday" name="birthdate" value="" required>
+                <birthday style="color:red"></birthday></br></br>
+                Password:&emsp; &emsp;&emsp;&emsp;&emsp;&emsp;<input type="password" placeholder="password"
+                    id="firstpassword" name="pass" value="" required>
+                <pass style="color:red"> </pass></br></br>
+                Confirm Password:&emsp; &nbsp;&emsp;<input type="password" placeholder="password" id="confirmpassword"
+                    name="confirmpass" value="" required>
+                <confirmpass style="color:red"></confirmpass></br></br>
+                Country:&emsp; &emsp;&nbsp;&nbsp;&nbsp;&nbsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;<select
+                    onclick="checkcountry()" name="country" id="country-selection" value="" size="1">
+                    <option value="country">India</option>
+                    <option name="country">USA</option>
+                    <option name="country">Germany</option>
+                    <option name="country">Italy</option>
+                    <option name="country">spain</option>
+                    <option name="country">nepal</option>
+                </select></br></br>
+                Join Date:&emsp; &emsp;&emsp;&emsp;&emsp;&emsp;<input type="date" id="joindate" class="date-width"
+                    placeholder="join date" name="joindate" value="" required>
+                <joindate style="color:red"></joindate></br></br>
+                Department:&emsp; &emsp;&emsp;&emsp;&emsp;<select onclick="checkdepartment()" name="department_name"
+                    id="department-selection" value="" size="1" required>
+                    <option name="dept">Human Resource</option>
+                    <option name="dept">Marketing</option>
+                    <option name="dept">Sales</option>
+                    <option name="dept">Finance</option>
+                    <option name="dept">General Management</option>
+                    <option name="dept">Operations</option>
+                    <option name="dept">Purchase</option>
+                </select></br></br>
+                State:&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<input type="text" id="state" placeholder="State"
+                    name="state" value="" required>
+                <state style="color:red"></state></br></br>
+                Mobile Number:&nbsp;&nbsp;&emsp;&emsp;&emsp;<input type="tel" placeholder="Mobilenumber"
+                    id="mobilenumber" name="mobilenumber" value="" required>
+                <mobilenumber style="color:red"></mobilenumber></br></br>
+                <button onclick="return checkvalidation()" class="signup-button" name="Firstuser" value="signedup"
+                    type="submit">Add Employee</button></br></br>
+            </div>
+        </form>
+    </div>
+
+
+
+
+    <script>
+        var k, i;
+        /*checks which country is selcted and send its value after submitting form*/
+        function checkcountry() {
+            let d = document.getElementById("country-selection");
+            let f = document.getElementsByName("Country");
+            let e = d.options[d.selectedIndex].text;
+            f[0].value = e;
+            k = f[0].value();
+            document.getElementById("country-selection").value = k;
+        }
+         /*checks which depaartment is selcted and send its value after submitting form*/
+        function checkdepartment() {
+
+            var d = document.getElementById("department-selection");
+            var f = document.getElementsByName("dept");
+            var e = d.options[d.selectedIndex].text;
+            f[0].value = e;
+
+            i = f[0].value();
+
+            document.getElementById("department-selection").value = i;
+
+        }
+        /*It validates the form fields like password,first name and reports error if it doesnot satisfy any criteria*/
+        function checkvalidation() {
+            let p = document.getElementById("firstpassword").value;
+            let cp = document.getElementById("confirmpassword").value;
+            let firstname = document.getElementById("firstname").value;
+            let lastname = document.getElementById("lastname").value;
+            let mobilenumber = document.getElementById("mobilenumber").value;
+            let joindate = document.getElementById("joindate").value;
+            let birthdate = document.getElementById("birthday").value;
+            let state = document.getElementById("state").value;
+            let email = document.getElementById("email").value;
+            /*Checks whether first name is having number of characters between 5 to 12 elose reports an error*/
+            if (firstname_validation(firstname, 5, 12)) {
+                if (passid_validation(p, cp, 7, 12)) {
+                    if (allLetter(firstname, lastname, state)) {
+                        if (mobile_validation(mobilenumber)) {
+
+                            if (ValidateEmail(email)) {
+
+                            }
+
+                        }
+                    }
+                }
+            }
+            return false;
+        }
+/*it validates first name that it should contyain only alphabets else report an error*/
+        function firstname_validation(uid, mx, my) {
+
+            var uid_len = uid.length;
+            var num = /^[A-Za-z]+$/;
+            var hty = document.getElementsByTagName("firstname");
+            if (uid.match(num)) {
+                if (uid_len == 0 || uid_len >= my || uid_len < mx) {
+                    hty[0].innerHTML = "&#42first name should contain 5 to 12 characters";
+
+                    return false;
+                }
+            }
+            else {
+                hty[0].innerHTML = "&#42First name must contain alphabets only";
+                return false;
+
+            }
+            hty[0].innerHTML = "";
+            return true
+
+
+        }
+/*It validates password that password length between mx and my as specified */
+
+        function passid_validation(passid, confpassid, mx, my) {
+            var passid_len = passid.length;
+            var passi = document.getElementsByTagName("pass");
+            if (passid_len == 0 || passid_len >= my || passid_len < mx) {
+                passi[0].innerHTML = "&#42passsword must contain 7 to 12 character only";
+                return false;
+            }
+            else {
+/*checks if password and confirm paSSWORD equalo*/
+                if (confpassid != passid) {
+
+                    passi[0].innerHTML = "&#42 password did not match";
+                    return false
+                }
+                passi[0].innerHTML = "";
+                return true;
+            }
+
+
+        }
+        /*checks if firstname ,lastname and state contain all letters*/
+        function allLetter(uname, lastname, state) {
+            var letters = /^[A-Za-z]+$/;
+            var s = document.getElementsByTagName("firstname");
+            var t = document.getElementsByTagName("lastname");
+            var u = document.getElementsByTagName("state");
+            if (uname.match(letters) && lastname.match(letters) && state.match(letters)) {
+                s[0].innerHTML = "";
+                t[0].innerHTML = "";
+                u[0].innerHTML = "";
+                return true;
+            }
+            else {
+                if (!uname.match(letters)) {
+                    s[0].innerHTML = "&#42firstname must contain alphabets only"
+                    return false;
+                }
+                if (!lastname.match(letters)) {
+                    t[0].innerHTML = '&#42lastname must have alphabet characters only';
+                    return false;
+                }
+                if (!state.match(letters)) {
+                    u[0].innerHTML = '&#42state must have alphabet characters only';
+                    return false;
+                }
+
+
+            }
+
+
+        }
+        /*it will validate mobile number.it should contain 10 digits else show error*/
+        function mobile_validation(mob) {
+            var numbers = /^[0-9]+$/;
+            var z = document.getElementsByTagName("mobilenumber");
+            if (mob.match(numbers)) {
+                z[0].innerHTML = '';
+                return true;
+            }
+            else {
+                z[0].innerHTML = '&#42mobilenumber must have numeric characters only';
+
+                return false;
+            }
+
+            return true;
+        }
+        /*it will validate email according to validate email standard*/
+        function ValidateEmail(uemail) {
+            var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+            var xd = document.getElementsByTagName("email");
+            if (uemail.value.match(mailformat)) {
+                return true;
+            }
+            else {
+                xd[0].innerHTML = "&#42You have entered an invalid email address!";
+
+                return false;
+            }
+            xd[0].innerHTML = "";
+            return true;
+        }
+/*this function helps in opening of side menu in header section*/
+        function openNav() {
+            document.getElementById("MySidenav").style.width = "250px";
+        }
+/*this function helkps in closing ofd side menu in header section*/
+        function closeNav() {
+            document.getElementById("MySidenav").style.width = "0";
+        }
+
+    </script>
+
+</body>
+
+</html>

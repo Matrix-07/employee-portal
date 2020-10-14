@@ -1,7 +1,7 @@
 var mongoose=require("mongoose");
 
 var initiatemongo=()=>{
-            mongoose.connect("mongodb://localhost:27017/employee1",{
+            mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost:27017/employee1",{
         useNewUrlParser: true,
         useUnifiedTopology: true
     });

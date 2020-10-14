@@ -19,9 +19,10 @@
             border: 2px solid black
         }
 
-        .as {
+        table {
+
             position: relative;
-            top: 40px;
+            left: 40%;
 
         }
     </style>
@@ -67,38 +68,18 @@ admin can check box the employees to send mail and can enter description in text
 after submiiting form will send mail to employees whose email is checked
 -->
     <div class="main ">
-        <form method="post" action="sendmail">
+        <b style="text-align:center;font-size: 2em;"> Recorded Reports</b></br></br>
+        <div class="k" id="employee-data">
 
             <table style="text-align:center">
-                <b style="text-align:center;font-size: 2em;"> Select The emails and send mail</b></br></br>
+
 
                 <tr>
                     <th>
-                        Email id
+                        Email
                     </th>
                     <th>
-                        Fname
-                    </th>
-                    <th>
-                        Lname
-                    </th>
-                    <th>
-                        Birthdate
-                    </th>
-                    <th>
-                        Country
-                    </th>
-                    <th>
-                        Mobilenumber
-                    </th>
-                    <th>
-                        State
-                    </th>
-                    <th>
-                        Join Date
-                    </th>
-                    <th>
-                        Department Name
+                        Issue
                     </th>
 
 
@@ -109,44 +90,29 @@ after submiiting form will send mail to employees whose email is checked
                 <tr>
 
                     <td>
-                        <input type="checkbox" name="email" value=<%=data[i].email%>> <%=data[i].email%>
+                        <%=data[i].email%>
                     </td>
                     <td>
-                        <%=data[i].Fname%>
-                    </td>
-                    <td>
-                        <%=data[i].country%>
-                    </td>
-                    <td>
-                        <%=data[i].birthdate%>
-                    </td>
-                    <td>
-                        <%=data[i].country%>
-                    </td>
-                    <td>
-                        <%=data[i].mobilenumber%>
-                    </td>
-                    <td>
-                        <%=data[i].state%>
-                    </td>
-                    <td>
-                        <%=data[i].joindate%>
-                    </td>
-                    <td>
-                        <%=data[i].department_name%>
+                        <%=data[i].issue%>
                     </td>
 
 
                 </tr>
 
                 <%}%>
-    
-</table>
-<textarea class="as" required cols="40" name="text" value="">Enter Text:</textarea><br></br><br></br>
-<button class=" signup-button" type="submit">sendmail </button>
-</form>
+            
+        </table>
+    </div>
+
+  
+<div id="no-data">
+    <b style="text-align:center;font-size: 2em;"> Currently there are no reports</b></br></br>
+</div>
+
 </div>
     <script>
+        var nodata = document.getElementById("no-data");
+        var employee_data = document.getElementById("employee-data");
         /*function to close nav*/
         function openNav() {
             document.getElementById("MySidenav").style.width = "250px";
@@ -156,6 +122,17 @@ after submiiting form will send mail to employees whose email is checked
         function closeNav() {
             document.getElementById("MySidenav").style.width = "0";
         }
+        if ("<%=length%>" == 0) {
+            nodata.style.display = "block";
+            employee_data.style.display = "none"
+
+
+        }
+        else {
+            employee_data.style.display = "block"
+            nodata.style.display = "none";
+        }
     </script>
 </body>
+
 </html>

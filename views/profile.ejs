@@ -1,36 +1,36 @@
 <!--it will display the profile of the user.It will take data from database of the user that is logged in-->
 <html>
-      <!--links for font awesome and external style sheet-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="assets/style.css" rel="stylesheet" type="text/css" />
+<!--links for font awesome and external style sheet-->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="assets/style.css" rel="stylesheet" type="text/css" />
+
 <head>
-    <meta name="viewport" content="width=device-width">
-    <style>
-       /*internal style sheet*/
-        input{
-           
-            border:0px;
-            border-bottom:2px solid black;
-            width:450px;
-           
-        }
+  <meta name="viewport" content="width=device-width">
+  <style>
+    /*internal style sheet*/
+    input {
 
-       
-#department-selection{
-display:none;
-}
+      border: 0px;
+      border-bottom: 2px solid black;
+      width: 450px;
 
-    </style>
+    }
+
+
+    #department-selection {
+      display: none;
+    }
+  </style>
 
 </head>
 
 
 <body>
-    
-    <%var mess="Edit profile";%>
-    
-    <% if(path=="/profile"){%>
-        <%  mess="Edit Profile"
+
+  <%var mess="Edit profile";%>
+
+  <% if(path=="/profile"){%>
+  <%  mess="Edit Profile"
        
       }
       else{
@@ -38,150 +38,154 @@ display:none;
           
           
           %>
-          
-     <% }
-      %>
-        <!-- Header Of each page with social icons at right-->
-      <div class="header-container">
 
-        <div >
-          <span style="font-size:30px;cursor:pointer" onclick="openNav()">
-            &#9776;
-          </span>
-          <div class="social-icons">
-            <a href="#" class="fa fa-facebook"></a>
-          <a href="#" class="fa fa-twitter"></a>
-          <a href="#" class="fa fa-linkedin"></a>
-          <a href="#" class="fa fa-instagram"></a>
-          </div>
-        </div>
-    
-        
+  <% }
+      %>
+  <!-- Header Of each page with social icons at right-->
+  <div class="header-container">
+
+    <div>
+      <span style="font-size:30px;cursor:pointer" onclick="openNav()">
+        &#9776;
+      </span>
+      <div class="social-icons">
+        <a href="#" class="fa fa-facebook"></a>
+        <a href="#" class="fa fa-twitter"></a>
+        <a href="#" class="fa fa-linkedin"></a>
+        <a href="#" class="fa fa-instagram"></a>
       </div>
-          
-      <!--Side menu bar which opens and closes on click .on opening it contains following sidebars-->
-    <div id="MySidenav" class="sidenav">
-        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-        <a href="main">Home </a>
-        <a  href="profile">Profile </a>  
-          <a  href="applyleave">Apply Leave</a>  
-         
-          <a href="#">Settings</a>
-          <a href="contact">Contact</a>
-          <a href="logout">Logout</a>       
-       </div>
-    
-       <div class="main">
- <!--I will displaythe details of the user-->
+    </div>
+
+
+  </div>
+
+  <!--Side menu bar which opens and closes on click .on opening it contains following sidebars-->
+  <div id="MySidenav" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <a href="main">Home </a>
+    <a href="profile">Profile </a>
+    <a href="applyleave">Apply Leave</a>
+
+    <a href="#">Settings</a>
+    <a href="contact">Contact</a>
+    <a href="logout">Logout</a>
+  </div>
+
+  <div class="main">
+    <!--I will displaythe details of the user-->
     <div class="profile-container">
 
-       
-    
-        <form action="updateProfile" method="POST" id="myform">
-            <a href="editProfile" id="update-profile-link">
-                <div class="edit-profile-button">Edit Profile</div>
-            </a><br>
-        <div  class="profile-font" >
-           
-    
+
+
+      <form action="updateProfile" method="POST" id="myform">
+        <a href="editProfile" id="update-profile-link">
+          <div class="edit-profile-button">Edit Profile</div>
+        </a><br>
+        <div class="profile-font">
+
+
           First Name:&nbsp;&nbsp;&emsp;&emsp;&nbsp;<input class="profile-font" type="text" name="Fname"
-                value="<%=data.Fname%>" readonly></br></br>
-            Last Name:&nbsp;&nbsp;&emsp;&emsp;&nbsp;&nbsp;<input class="profile-font" type="text" name="Lname"
-                value="<%-data.Lname%>" readOnly></br></br>
-            Birth Date:&nbsp;&nbsp;&nbsp;&emsp;&emsp;&nbsp;<input class="profile-font" type="date" value="<%=data.birthdate%>" name="birthdate"
-                readOnly></br></br>
-           
-            Country:&nbsp;&nbsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;<input class="profile-font" type="text" value="<%=data.country%>" name="country"
-                readOnly></br></br>
-            State:&nbsp;&nbsp;&emsp;&nbsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;<input class="profile-font" type="text" value="<%=data.state%>" name="state"
-               readOnly></br></br>
-            Email-Id:&nbsp;&nbsp;&nbsp;&nbsp; &emsp;&emsp;&nbsp;&nbsp;<input class="profile-font" type="text" value="<%=data.email%>" name="email"readOnly></br></br>
-            Join Date:&nbsp;&nbsp;&nbsp;&emsp;&emsp;&emsp;<input class="profile-font" type="date" readOnly  name="joindate" value="<%=data.joindate%>" required></br></br>
-            Department:&nbsp;&nbsp;&emsp;&emsp;<input class="profile-font" id="dept" readOnly type="text" value="<%=data.department_name%>"><select class="department-border1" onclick="checkdepartment()"  name="department_name" id="department-selection"   size="1">
-                <option name="dept">Human Resource</option>
-                <option name="dept">Marketing</option>
-                <option name="dept">Salesman</option>
-                <option name="dept">Finance</option>
-                <option name="dept">General</option>
-                <option name="dept">Operations</option>
-                <option name="dept">Purchase</option>
-            </select></br></br>
-            Mobile Number:&nbsp;&nbsp; &nbsp;<input readOnly class="profile-font" type="text" value="<%=data.mobilenumber%>" name="mobilenumber" readOnly></br></br>
-          
-            <button type="submit" id="edit-update-button" class="edit-update-button">Update</button>
+            value="<%=data.Fname%>" readonly></br></br>
+          Last Name:&nbsp;&nbsp;&emsp;&emsp;&nbsp;&nbsp;<input class="profile-font" type="text" name="Lname"
+            value="<%-data.Lname%>" readOnly></br></br>
+          Birth Date:&nbsp;&nbsp;&nbsp;&emsp;&emsp;&nbsp;<input class="profile-font" type="date"
+            value="<%=data.birthdate%>" name="birthdate" readOnly></br></br>
+
+          Country:&nbsp;&nbsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;<input class="profile-font" type="text"
+            value="<%=data.country%>" name="country" readOnly></br></br>
+          State:&nbsp;&nbsp;&emsp;&nbsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;<input class="profile-font" type="text"
+            value="<%=data.state%>" name="state" readOnly></br></br>
+          Email-Id:&nbsp;&nbsp;&nbsp;&nbsp; &emsp;&emsp;&nbsp;&nbsp;<input class="profile-font" type="text"
+            value="<%=data.email%>" name="email" readOnly></br></br>
+          Join Date:&nbsp;&nbsp;&nbsp;&emsp;&emsp;&emsp;<input class="profile-font" type="date" readOnly name="joindate"
+            value="<%=data.joindate%>" required></br></br>
+          Department:&nbsp;&nbsp;&emsp;&emsp;<input class="profile-font" id="dept" readOnly type="text"
+            value="<%=data.department_name%>"><select class="department-border1" onclick="checkdepartment()"
+            name="department_name" id="department-selection" size="1">
+            <option name="dept">Human Resource</option>
+            <option name="dept">Marketing</option>
+            <option name="dept">Salesman</option>
+            <option name="dept">Finance</option>
+            <option name="dept">General</option>
+            <option name="dept">Operations</option>
+            <option name="dept">Purchase</option>
+          </select></br></br>
+          Mobile Number:&nbsp;&nbsp; &nbsp;<input readOnly class="profile-font" type="text"
+            value="<%=data.mobilenumber%>" name="mobilenumber" readOnly></br></br>
+
+          <button type="submit" id="edit-update-button" class="edit-update-button">Update</button>
         </div>
-    </form>
+      </form>
 
     </div>
-    
-    </div>
 
-<script>
+  </div>
+
+  <script>
 
     /*open side menu bar*/
     function openNav() {
-  document.getElementById("MySidenav").style.width = "250px";
-}
-/*close side menu bar*/
-function closeNav() {
-  document.getElementById("MySidenav").style.width = "0";
-}    
-/*This template used for two routers
-1.displaying profile with edit button
-2.updating profile
-if the router is edit profile the user can update profile after clicking edit button
-if the router is profileuser can just see the profile
-*/
-var path="<%=path%>";
-if(path=="/editProfile"){
-/*edit button display will be set to none and update button will be diaplyed as block */
-    let edit_profile_button=document.getElementById("update-profile-link").style;
-    edit_profile_button.display="none";
-   
-    let inputs =document.getElementsByClassName("profile-font");
-    
-    let update_button=document.getElementById("edit-update-button").style;
-    update_button.display="block";
-    
-    let disply_departemnt_selection=document.getElementById("department-selection").style;
-    disply_departemnt_selection.display="block";
-    disply_departemnt_selection.left="395px";
-    /*Email are unique so can't be modified*/
-    for(let i=0;i<inputs.length;i++)
-    {
-        
-        if(inputs[i].name!="email")
-            inputs[i].readOnly=false;
-           
+      document.getElementById("MySidenav").style.width = "250px";
     }
-    
-    
-}
-//select the department name from select tag and display
-function checkdepartment(){
-    
-        let d=document.getElementById("department-selection");
-        let dept=document.getElementsByName("dept");
-        let selected_dept=d.options[d.selectedIndex].text;
-        
-        f[0].value=selected_dept;
-        let input_dept=document.getElementById("dept");
-    input_dept.setAttribute("value",f[0].value);
-        /*i=  f[0].value();*/
-        document.getElementById("department-selection").value=f[0].value();
-       
-       
+    /*close side menu bar*/
+    function closeNav() {
+      document.getElementById("MySidenav").style.width = "0";
+    }
+    /*This template used for two routers
+    1.displaying profile with edit button
+    2.updating profile
+    if the router is edit profile the user can update profile after clicking edit button
+    if the router is profileuser can just see the profile
+    */
+    var path = "<%=path%>";
+    if (path == "/editProfile") {
+      /*edit button display will be set to none and update button will be diaplyed as block */
+      let edit_profile_button = document.getElementById("update-profile-link").style;
+      edit_profile_button.display = "none";
+
+      let inputs = document.getElementsByClassName("profile-font");
+
+      let update_button = document.getElementById("edit-update-button").style;
+      update_button.display = "block";
+
+      let disply_departemnt_selection = document.getElementById("department-selection").style;
+      disply_departemnt_selection.display = "block";
+      disply_departemnt_selection.left = "395px";
+      /*Email are unique so can't be modified*/
+      for (let i = 0; i < inputs.length; i++) {
+
+        if (inputs[i].name != "email")
+          inputs[i].readOnly = false;
+
+      }
+
+
+    }
+    //select the department name from select tag and display
+    function checkdepartment() {
+
+      let d = document.getElementById("department-selection");
+      let dept = document.getElementsByName("dept");
+      let selected_dept = d.options[d.selectedIndex].text;
+
+      f[0].value = selected_dept;
+      let input_dept = document.getElementById("dept");
+      input_dept.setAttribute("value", f[0].value);
+      /*i=  f[0].value();*/
+      document.getElementById("department-selection").value = f[0].value();
+
+
     }
     //select the country name from select tag and display
-    function checkcountry(){
-        let c=document.getElementById("country-selection");
-        let country=document.getElementsByName("Country");
-        let selected_country=d.options[d.selectedIndex].text;
-        f[0].value=selected_country;
-        document.getElementById("country-selection").value=f[0].value();
+    function checkcountry() {
+      let c = document.getElementById("country-selection");
+      let country = document.getElementsByName("Country");
+      let selected_country = d.options[d.selectedIndex].text;
+      f[0].value = selected_country;
+      document.getElementById("country-selection").value = f[0].value();
     }
 
-</script>
+  </script>
 </body>
 
 </html>

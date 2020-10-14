@@ -1,100 +1,100 @@
-
 <!--It is the main login page . values entered will be validated and checks if exiss in database.
     if credentials are correct t will get logged in else tr again-->
 <html>
 
 <head>
   <!--links for font awesome and external style sheet-->
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="assets/style.css" rel="stylesheet" type="text/css" />
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="assets/style.css" rel="stylesheet" type="text/css" />
 
 </head>
 
-<body >
-    
- 
-    <style>
+<body>
+
+
+  <style>
     /*syle sheet*/
-        /*footer*/
-      footer {
-    background-color: #000;
-    color: #9b9b9b;
-    font-size: 12px;
-    position: relative;
-    padding: 50px 0;
-    width: 100%;
- 
-    display: flex;
-    flex-direction: row;
-    text-align: center;
-    flex-wrap:wrap;
+    /*footer*/
+    footer {
+      background-color: #000;
+      color: #9b9b9b;
+      font-size: 12px;
+      position: relative;
+      padding: 50px 0;
+      width: 100%;
 
-}
-      
-        input{
-           color: teal;
-            text-align: center;
-  
-  height:30px;
-  width:250px;
-            
-        }
-        .footer-box1{
-            
-            height:100%;
-            width:20%;
-            border:2px solid white;
-        }
-   </style>
-    <!-- Header Of each page with social icons at right-->
-    <div class="header-container">
+      display: flex;
+      flex-direction: row;
+      text-align: center;
+      flex-wrap: wrap;
 
-        <div >
-          <span style="font-size:30px;cursor:pointer" onclick="openNav()">
-            &#9776;
-          </span>
-          <div class="social-icons">
-            <a href="#" class="fa fa-facebook"></a>
-          <a href="#" class="fa fa-twitter"></a>
-          <a href="#" class="fa fa-linkedin"></a>
-          <a href="#" class="fa fa-instagram"></a>
-          </div>
-        </div>
+    }
+
+    input {
+      color: teal;
+      text-align: center;
+
+      height: 30px;
+      width: 250px;
+
+    }
+
+    .footer-box1 {
+
+      height: 100%;
+      width: 20%;
+      border: 2px solid white;
+    }
+  </style>
+  <!-- Header Of each page with social icons at right-->
+  <div class="header-container">
+
+    <div>
+      <span style="font-size:30px;cursor:pointer" onclick="openNav()">
+        &#9776;
+      </span>
+      <div class="social-icons">
+        <a href="#" class="fa fa-facebook"></a>
+        <a href="#" class="fa fa-twitter"></a>
+        <a href="#" class="fa fa-linkedin"></a>
+        <a href="#" class="fa fa-instagram"></a>
+      </div>
     </div>
-    
-   <div class="logger-container">
+  </div>
+
+  <div class="logger-container">
     <img class="logger-img" src="/assets/images/bg_1.jpg" alt="hg">
-   
-   <div class="logger_form ">
-       <!--Login form-->
-    <form  method="POST"  action="/signup">
+
+    <div class="logger_form ">
+      <!--Login form-->
+      <form method="POST" action="/signup">
         <h4 style="color:red"><%=text%></h4>
-        <b>Email<b> :&emsp;&emsp;&emsp; <input  name="email" value="" type="email" placeholder="xyz@gmail.com"
-            required></br></br>
+        <b>Email<b> :&emsp;&emsp;&emsp; <input name="email" value="" type="email" placeholder="xyz@gmail.com"
+              required></br></br>
 
-        <b>Password</b>:&emsp;&emsp;<input  type="password" id="as" placeholder="password" name="password" value=""
-            required></br></br>
-       &emsp;&emsp;<button  class="signup-button" value="login" name="submittype"
-            type="submit">Login</button></br></br>
-           &emsp;<a style="color:black"  href="resetpassword">Forgot Password?</a>
-    </form>
-    
+            <b>Password</b>:&emsp;&emsp;<input type="password" id="as" placeholder="password" name="password" value=""
+              required></br></br>
+            &emsp;&emsp;<button class="signup-button" value="login" name="submittype"
+              type="submit">Login</button></br></br>
+            &emsp;<a style="color:black" href="resetpassword">Forgot Password?</a>
+      </form>
 
-   
-   </div>
-</div>
 
- <footer> 
- 
- </footer> 
-   <script>
- var d = new Date(); 
-  var currentYear = d.getFullYear();
 
-var footer=document.getElementsByTagName("footer");
-footer[0].innerHTML="<b style='font-size:2em'>We create possibilities for the connected world<br><small>&copy; Copyright "+ currentYear+", Example Corporation</small></b>";
-   </script>
+    </div>
+  </div>
+
+  <footer>
+
+  </footer>
+  <script>
+    var d = new Date();
+    var currentYear = d.getFullYear();
+
+    var footer = document.getElementsByTagName("footer");
+    footer[0].innerHTML = "<b style='font-size:2em'>We create possibilities for the connected world<br><small>&copy; Copyright " + currentYear + ", Example Corporation</small></b>";
+  </script>
 
 </body>
 

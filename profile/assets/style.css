@@ -14,6 +14,29 @@
   overflow: hidden;
   flex-wrap: wrap;
 }
+#nodata{
+  position: relative;
+  
+          }
+          #search-form{
+            position:relative;
+            top:40px;
+            margin:auto;
+            width:50%;
+          
+            
+        
+        }
+        #employee-data{
+          position:relative;
+          top:40px
+      }
+#no-data{
+  position:relative;
+  margin: auto;
+  width:50%;
+     top:60px
+}
 .logger-container {
   width: 100%;
   display: flex;
@@ -277,6 +300,7 @@ font-weight: bold;
 font-size:28px;
   width: 40%;
 }
+
 
 
 

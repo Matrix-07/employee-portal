@@ -1,270 +1,164 @@
 <!--this page is diaplyed when admin search for am employee in database-->
 <html>
+
 <head>
-<!--links for font awesome and external style sheet-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!--links for font awesome and external style sheet-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
     <link href="assets/style.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
+    <style>
+        .fa-search {
+            position: relative;
+            top: 10px;
+            right: 5px;
+            border: 0px;
+            height: 45px;
+            padding: 10px;
+        }
+    </style>
     <!--ejs template variable initislly set to null -->
-    <% 
-    var email="";
-   
-    var Fname="";
-    var Lname="";
-    var department_name="";
-    var department_id="";
-  var country="";
-  var birthdate="";
-  var mobilenumber="";
-  var state="";
-  var joindate="";
-  var department_id="";
-  
+    <% var email=""; var Fname=""; var Lname=""; var department_name=""; var
+    department_id=""; var country=""; var birthdate=""; var mobilenumber=""; var
+    state=""; var joindate=""; var department_id=""; %> <% if(length==0 &&
+    path=="post"){%> <% email=data.email%> <%}%>
 
-      %>
-      <% if(length==0 && path=="post"){%>
-    <% email=data.email%>
-    <%}%>
+    <!--after database opoeration if data is present then resp[ective value will be set-->
 
-      
-<!--after database opoeration if data is present then resp[ective value will be set-->
-
-    <% if(length>0){%>
-  <%
-  email=data.email;
-  country=data.country;
-       Fname=data.Fname;
-        Lname=data.Lname;
-         department_name=data.department_name;
-      department_id=data.department_id;
-      birthdate=data.birthdate;
-      mobilenumber=data.mobilenumber;
-      state=data.state;
-      joindate=data.joindate;
-
-          
-         %>
-        
-   <% }%>
+    <% if(length>0){%> <% email=data.email; country=data.country;
+    Fname=data.Fname; Lname=data.Lname; department_name=data.department_name;
+    department_id=data.department_id; birthdate=data.birthdate;
+    mobilenumber=data.mobilenumber; state=data.state; joindate=data.joindate; %>
+    <% }%>
 
     <style>
-        
-    /*internal style sheet*/
-   
-        table,th,tr,td{
-    
-            border-collapse: collapse;
-            border:2px solid black
-        }
-        #nodata{
-position: relative;
+        /*internal style sheet*/
 
+        table,
+        th,
+        tr,
+        td {
+            border-collapse: collapse;
+            border: 2px solid black;
         }
-        #search-form{
-            position:relative;
-            top:40px;
-            margin:auto;
-            width:50%;
-          
-            
-        
+
+        input {
+            height: 43px;
+            width: 40%;
         }
-        input{
-            height:43px;
-            width:40%;
-        }
-       #employee-data{
-           position:relative;
-           top:40px
-       }
-      .fa-search{
-       
-          position: relative;
-          top:10px;
-          right:5px;
-          border:0px;
-          height:45px;
-          padding:10px;
-         
-      }
-      #no-data{
-        position:relative;
-        margin: auto;
-        width:50%;
-           top:60px
-      }
-      
     </style>
 
- <!-- Header Of each page with social icons at right-->
-<div class="header-container">
-
-    <div>
-      <span style="font-size:30px;cursor:pointer" onclick="openNav()">
-        &#9776;
-      </span>
-      <div class="social-icons">
-        <a href="#" class="fa fa-facebook"></a>
-      <a href="#" class="fa fa-twitter"></a>
-      <a href="#" class="fa fa-linkedin"></a>
-      <a href="#" class="fa fa-instagram"></a>
-      </div>
+    <!-- Header Of each page with social icons at right-->
+    <div class="header-container">
+        <div>
+            <span style="font-size: 30px; cursor: pointer" onclick="openNav()">
+                &#9776;
+            </span>
+            <div class="social-icons">
+                <a href="#" class="fa fa-facebook"></a>
+                <a href="#" class="fa fa-twitter"></a>
+                <a href="#" class="fa fa-linkedin"></a>
+                <a href="#" class="fa fa-instagram"></a>
+            </div>
+        </div>
     </div>
 
-    
-  </div>
+    <!--Side menu bar which opens and closes on click .on opening it contains following sidebars-->
+    <div id="MySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="admin_page">Home </a>
 
- <!--Side menu bar which opens and closes on click .on opening it contains following sidebars-->
-  <div id="MySidenav" class="sidenav">
-    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-    <a href="admin_page">Home </a>
-    
-    <a href="getemployees">Get Employees</a>
-    <a href="addemployee">Add Employee</a>
-    <a href="getleave">Get leaves</a>
-    <a href="searchemployee">Search Employee</a> 
-    <a href="sendmail">Sendmail</a> 
-    <a href="temp_mail">Send Temprorary Email</a> 
-    <a href="logout">Logout</a>
-  </div>
-  <div class="main">
- <!--search form to search employee after submitting it will search in data abse with respect to value entered-->
-<div id="search-form">
-    <form method="POST" action="/searchemployee">
-        <b style="font-size:25px">Search Employee:</b> <input type="text" name="email" value="<%=email%>">
-   <button type="submit" class="fa fa-search fa1"></button>
-    
-</form>
-
-</div>
-<!--if database doent have any employee associated with value entered-->
-<div id="no-data">
-<h1> Sorry there are no available employee with the email: <%=email%></h1>
-</div>
-<!--if value entered has details of emoployee then it will be displyed in the form of table-->
-<div id="employee-data" >
-
-
-    <table style="text-align:center">
-        <h1 style="text-align:center"> Employees Details</h1>
-    
-        <tr>
-            <th>
-                Email id
-                        </th>
-                        <th>
-                            Fname
-                                    </th>
-                                    <th>
-                                        Lname
-                                                </th>
-            <th>
-    Birthdate
-            </th>
-            <th>
-    Country
-            </th>
-            <th>
-    Mobilenumber
-            </th>
-            <th>
-                State
-            </th>
-            <th>
-                Join Date
-            </th>
-            <th>
-                Department Name
-            </th>
-            <th>
-                Department Id
-            </th>
-    
-        </tr>
-    
-    
-      
-            <tr>
-    
-                <td>
-                    <%=email%>
-                    </td>
-                <td>
-                <%=Fname%>
-                </td>
-                <td>
-                <%=country%>
-                </td>
-                <td>
-                <%=birthdate%>
-                </td>
-                <td>
-                    <%=country%>
-                    </td>
-                <td>
-                <%=mobilenumber%>
-                </td>
-                <td>
-                    <%=state%>
-                </td>
-                <td>
-                    <%=joindate%>
-                </td>
-                <td>
-                    <%=department_name%>
-                </td>
-                <td>
-                    <%=department_id%>
-                </td>
-               
-                
-                    </tr>
-    </table>
+        <a href="getemployees">Get Employees</a>
+        <a href="addemployee">Add Employee</a>
+        <a href="getleave">Get leaves</a>
+        <a href="searchemployee">Search Employee</a>
+        <a href="sendmail">Sendmail</a>
+        <a href="temp_mail">Send Temprorary Email</a>
+        <a href="report">Reports</a>
+        <a href="logout">Logout</a>
     </div>
+    <div class="main">
+        <!--search form to search employee after submitting it will search in data abse with respect to value entered-->
+        <div id="search-form">
+            <form method="POST" action="/searchemployee">
+                <b style="font-size: 25px">Search Employee:</b>
+                <input type="text" name="email" value="<%=email%>" />
+                <button type="submit" class="fa fa-search fa1"></button>
+            </form>
+        </div>
+        <!--if database doent have any employee associated with value entered-->
+        <div id="no-data">
+            <h1>
+                Sorry there are no available employee with the email: <%=email%>
+            </h1>
+        </div>
+        <!--if value entered has details of emoployee then it will be displyed in the form of table-->
+        <div id="employee-data">
+            <table style="text-align: center">
+                <h1 style="text-align: center">Employees Details</h1>
 
-</div>
-<script>
-/*it contains two div elementsb with id no data and employee data.
-no data div is displyed if there are no employees in databse
-else employee data table will be diaplyed
+                <tr>
+                    <th>Email id</th>
+                    <th>Fname</th>
+                    <th>Lname</th>
+                    <th>Birthdate</th>
+                    <th>Country</th>
+                    <th>Mobilenumber</th>
+                    <th>State</th>
+                    <th>Join Date</th>
+                    <th>Department Name</th>
+                    <th>Department Id</th>
+                </tr>
 
-*/
-
-       var nodata=document.getElementById("no-data");
-       var employee_data=document.getElementById("employee-data");
-       /*length is zero which means no data */
-    if("<%=length%>"==0)
-    {
-        employee_data.style.display="none";
-        /*there are two methods get and post.firest get will render this form with initial values.
-        after searching is clicked it changes method to post and same method will be diaplyed taking data from database.
-         and */
-        if("<%=path%>"=="get")
-        {
-        
-        nodata.style.display="none";
-        }
-        else{
-            nodata.style.display="block";
-        }
-
-    }
-    else{
-        employee_data.style.display="block";
-        nodata.style.display="none";
-
-    }
-    /*function to open side menu bar*/
-    function openNav() {
-      document.getElementById("MySidenav").style.width = "250px";
-    }
-/*function to close side menu bar*/
-    function closeNav() {
-      document.getElementById("MySidenav").style.width = "0";
-    }
-</script>
+                <tr>
+                    <td><%=email%></td>
+                    <td><%=Fname%></td>
+                    <td><%=country%></td>
+                    <td><%=birthdate%></td>
+                    <td><%=country%></td>
+                    <td><%=mobilenumber%></td>
+                    <td><%=state%></td>
+                    <td><%=joindate%></td>
+                    <td><%=department_name%></td>
+                    <td><%=department_id%></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <script>
+        /*it contains two div elementsb with id no data and employee data.
+  no data div is displyed if there are no employees in databse
+  else employee data table will be diaplyed
   
+  */
+
+        var nodata = document.getElementById("no-data");
+        var employee_data = document.getElementById("employee-data");
+        /*length is zero which means no data */
+        if ("<%=length%>" == 0) {
+            employee_data.style.display = "none";
+            /*there are two methods get and post.firest get will render this form with initial values.
+            after searching is clicked it changes method to post and same method will be diaplyed taking data from database.
+             and */
+            if ("<%=path%>" == "get") {
+                nodata.style.display = "none";
+            } else {
+                nodata.style.display = "block";
+            }
+        } else {
+            employee_data.style.display = "block";
+            nodata.style.display = "none";
+        }
+        /*function to open side menu bar*/
+        function openNav() {
+            document.getElementById("MySidenav").style.width = "250px";
+        }
+        /*function to close side menu bar*/
+        function closeNav() {
+            document.getElementById("MySidenav").style.width = "0";
+        }
+    </script>
 </body>
+
 </html>

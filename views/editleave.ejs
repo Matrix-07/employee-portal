@@ -1,90 +1,101 @@
 <!--edit leave template to edit the alread applied leave-->
 <html>
-    <head>
-        <meta charset="utf=8">
 
-        </meta>
-         <!--links for font awesome and external style sheet-->
-      
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link href="assets/style.css" rel="stylesheet" type="text/css" />
-      </head>
-    <body>
-        <style>
- 
-        </style>
-           <!-- Header Of each page with social icons at right-->
-        <div class="header-container">
+<head>
+  <meta charset="utf=8">
 
-            <div >
-              <span style="font-size:30px;cursor:pointer" onclick="openNav()">
-                &#9776;
-              </span>
-              <div class="social-icons">
-                <a href="#" class="fa fa-facebook"></a>
-              <a href="#" class="fa fa-twitter"></a>
-              <a href="#" class="fa fa-linkedin"></a>
-              <a href="#" class="fa fa-instagram"></a>
-              </div>
-            </div>
-              <!--Side menu bar which opens and closes on click .on opening it contains following sidebars-->
-            <div id="MySidenav" class="sidenav">
-                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-                <a href="main">Home </a>
-                <a href="profile">Profile </a>
-                <a href="applyleave">Apply Leave</a>
-                <a href="#">Settings</a>
-                <a href="contact">Contact</a>
-                <a href="logout">Logout</a>
-                
-              </div>
-            
-          </div>
-          <div class="main">
+  </meta>
+  <!--links for font awesome and external style sheet-->
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="assets/style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+  <style>
+
+  </style>
+  <!-- Header Of each page with social icons at right-->
+  <div class="header-container">
+
+    <div>
+      <span style="font-size:30px;cursor:pointer" onclick="openNav()">
+        &#9776;
+      </span>
+      <div class="social-icons">
+        <a href="#" class="fa fa-facebook"></a>
+        <a href="#" class="fa fa-twitter"></a>
+        <a href="#" class="fa fa-linkedin"></a>
+        <a href="#" class="fa fa-instagram"></a>
+      </div>
+    </div>
+    <!--Side menu bar which opens and closes on click .on opening it contains following sidebars-->
+    <div id="MySidenav" class="sidenav">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+      <a href="main">Home </a>
+      <a href="profile">Profile </a>
+      <a href="applyleave">Apply Leave</a>
+      <a href="#">Settings</a>
+      <a href="contact">Contact</a>
+      <a href="logout">Logout</a>
+
+    </div>
+
+  </div>
+  <div class="main">
     <!--It is  leave application form with previous values-->
-        <h1><div id="leaveform">
-           
-           
-            <div class="leaveform-box">
-                &nbsp;&emsp;&nbsp;&emsp;<hr> Leave Application Form<hr>
-                <form  method="get" action="updateleave"><br><br>
-                    
-                   From date:<input class="leave-border" type="date" required name="fromdate" value="<%=data.fromdate%>"><br><br><br>
-                  
-                  To date:&nbsp;&emsp;<input class="leave-border" type="date" required name="todate" value="<%=data.todate%>"><br><br><br>
-                    
-                    Leave type:<select class="leave-border" onclick="checkleave()"  required name="leavetype" id="leave-type"  value="<%=data.leavetype%>"  size="1">
-                        <option name="leave">Earned Leave</option>
-                        <option name="leave">Sick Leave</option>
-                        <option name="leave">Casual Leave</option>
-                        
-                    </select><br><br><br>
-                   
-        Remarks:&emsp;<textarea class="leave-border"  required cols="100" name="remarks" value=""><%=data.remarks%></textarea>
-        <br><br><br>
-        &nbsp;&emsp;&nbsp;&emsp;&nbsp;&emsp;&nbsp;&emsp;   <button  type="submit">Submit Leave Request</button><br><br><br>
-                    
-    
-            </div></h1>
-            
-            </div>
-        
-        
-        
-        <script>
-           /*open theside menu bar*/
-    
-function openNav() {
+    <h1>
+      <div id="leaveform">
+
+
+        <div class="leaveform-box">
+          &nbsp;&emsp;&nbsp;&emsp;
+          <hr> Leave Application Form
+          <hr>
+          <form method="get" action="updateleave"><br><br>
+
+            From date:<input class="leave-border" type="date" required name="fromdate"
+              value="<%=data.fromdate%>"><br><br><br>
+
+            To date:&nbsp;&emsp;<input class="leave-border" type="date" required name="todate"
+              value="<%=data.todate%>"><br><br><br>
+
+            Leave type:<select class="leave-border" onclick="checkleave()" required name="leavetype" id="leave-type"
+              value="<%=data.leavetype%>" size="1">
+              <option name="leave">Earned Leave</option>
+              <option name="leave">Sick Leave</option>
+              <option name="leave">Casual Leave</option>
+
+            </select><br><br><br>
+
+            Remarks:&emsp;<textarea class="leave-border" required cols="100" name="remarks"
+              value=""><%=data.remarks%></textarea>
+            <br><br><br>
+            &nbsp;&emsp;&nbsp;&emsp;&nbsp;&emsp;&nbsp;&emsp; <button type="submit">Submit Leave
+              Request</button><br><br><br>
+
+
+        </div>
+    </h1>
+
+  </div>
+
+
+
+  <script>
+    /*open theside menu bar*/
+
+    function openNav() {
       document.getElementById("MySidenav").style.width = "250px";
     }
-   /*close the side menu bar*/
+    /*close the side menu bar*/
     function closeNav() {
       document.getElementById("MySidenav").style.width = "0";
     }
 
-        </script>
+  </script>
 
-    </body>
+</body>
 
 
 </html>

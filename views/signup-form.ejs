@@ -50,15 +50,17 @@
         <a href="addemployee">Add Employee</a>
         <a href="getleave">Get leaves</a>
         <a href="sendmail">Sendmail</a>
-        <a href="temp_mail">Send Temprorary Email</a> 
+        <a href="temp_mail">Send Temprorary Email</a>
         <a href="searchemployee">Search Employee</a>
+        <a href="report">Reports</a>
         <a href="logout">Logout</a>
     </div>
-<!--Sign up form to rigister new employee with proper css-->
+    <!--Sign up form to rigister new employee with proper css-->
     <div class="profile-container">
         <form method="get" action="/">
 
-            <%message=""%><!--his message displays if there is an error in password or email after signup and 
+            <%message=""%>
+            <!--his message displays if there is an error in password or email after signup and 
                 reports an error after validating form-->
 
             <div class="profile-font x">
@@ -128,7 +130,7 @@
             k = f[0].value();
             document.getElementById("country-selection").value = k;
         }
-         /*checks which depaartment is selcted and send its value after submitting form*/
+        /*checks which depaartment is selcted and send its value after submitting form*/
         function checkdepartment() {
 
             var d = document.getElementById("department-selection");
@@ -168,7 +170,7 @@
             }
             return false;
         }
-/*it validates first name that it should contyain only alphabets else report an error*/
+        /*it validates first name that it should contyain only alphabets else report an error*/
         function firstname_validation(uid, mx, my) {
 
             var uid_len = uid.length;
@@ -191,7 +193,7 @@
 
 
         }
-/*It validates password that password length between mx and my as specified */
+        /*It validates password that password length between mx and my as specified */
 
         function passid_validation(passid, confpassid, mx, my) {
             var passid_len = passid.length;
@@ -201,7 +203,7 @@
                 return false;
             }
             else {
-/*checks if password and confirm paSSWORD equalo*/
+                /*checks if password and confirm paSSWORD equalo*/
                 if (confpassid != passid) {
 
                     passi[0].innerHTML = "&#42 password did not match";
@@ -275,11 +277,11 @@
             xd[0].innerHTML = "";
             return true;
         }
-/*this function helps in opening of side menu in header section*/
+        /*this function helps in opening of side menu in header section*/
         function openNav() {
             document.getElementById("MySidenav").style.width = "250px";
         }
-/*this function helkps in closing ofd side menu in header section*/
+        /*this function helkps in closing ofd side menu in header section*/
         function closeNav() {
             document.getElementById("MySidenav").style.width = "0";
         }

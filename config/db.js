@@ -1,11 +1,15 @@
 var mongoose=require("mongoose");
 
 var initiatemongo=()=>{
-            mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost:27017/employee1",{
+    
+    
+    const uri = "mongodb+srv://admin:Shivu1997@cluster0.m5aap.azure.mongodb.net/employee1?retryWrites=true&w=majority";
+    
+            mongoose.connect(uri || process.env.MONGODB_URI  || "mongodb://localhost:27017/employee1",{
         useNewUrlParser: true,
         useUnifiedTopology: true
     });
-
+    
         var db=mongoose.connection;
         db.on("error",()=>{
         console.log("connection error");

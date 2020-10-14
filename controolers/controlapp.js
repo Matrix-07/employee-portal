@@ -1,10 +1,10 @@
 
-var department = require("D:/employee/employee/Ecommerce/model/department.js");
-var employee = require("D:/employee/employee/Ecommerce/model/employee.js");
-var leaves = require("D:/employee/employee/Ecommerce/model/leaves.js");
+var department = require("../model/department.js");
+var employee = require("../model/employee.js");
+var leaves = require("../model/leaves.js");
 
-var leavetype = require("D:/employee/employee/Ecommerce/model/leavetype.js");
-var emp_emails = require("D:/employee/employee/Ecommerce/model/emp_emails.js");
+var leavetype = require("../model/leavetype.js");
+var emp_emails = require("../model/emp_emails.js");
 var bodyparser = require("body-parser");
 var session = require("express-session");
 var urlencodedParser = bodyparser.urlencoded({ extended: true });

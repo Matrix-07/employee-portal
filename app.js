@@ -2,9 +2,9 @@ var express = require("express");
 var cont=require(__dirname+"/controolers/controlapp");
 const mongoose = require("mongoose");
 mongoose.Promise = global.Promise;
-var admin= require("D:/employee/employee/Ecommerce/model/admin.js");
+var admin= require(__dirname+"/model/admin.js");
 
-var initiatemongo=require("D:/employee/employee/Ecommerce/config/db");
+var initiatemongo=require(__dirname+"/config/db");
 
 var session=require("express-session");
 

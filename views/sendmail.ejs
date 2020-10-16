@@ -5,26 +5,12 @@
     <!--links for font awesome and external style sheet-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="assets/style.css" rel="stylesheet" type="text/css" />
+    <title>Employee Portal</title>
 </head>
 
 <body>
 
-    <style>
-        /*internal style sheet*/
-        table,
-        th,
-        tr,
-        td {
-            border-collapse: collapse;
-            border: 2px solid black
-        }
-
-        .as {
-            position: relative;
-            top: 40px;
-
-        }
-    </style>
+   
 
     <!-- Header Of each page with social icons at right-->
     <div class="header-container">
@@ -54,9 +40,10 @@
         <a href="addemployee">Add Employee</a>
         <a href="getleave">Get leaves</a>
         <a href="searchemployee">Search Employee</a>
+        <a href="sendmail">Sendmail</a>
         <a href="temp_mail">Send Temprorary Email</a>
         <a href="report">Reports</a>
-        <a href="sendmail">Sendmail</a>
+      
 
         <a href="logout">Logout</a>
     </div>
@@ -67,84 +54,89 @@ admin can check box the employees to send mail and can enter description in text
 after submiiting form will send mail to employees whose email is checked
 -->
     <div class="main ">
-        <form method="post" action="sendmail">
+       
+            <form method="post" action="sendmail">
 
-            <table style="text-align:center">
-                <b style="text-align:center;font-size: 2em;"> Select The emails and send mail</b></br></br>
-
-                <tr>
-                    <th>
-                        Email id
-                    </th>
-                    <th>
-                        Fname
-                    </th>
-                    <th>
-                        Lname
-                    </th>
-                    <th>
-                        Birthdate
-                    </th>
-                    <th>
-                        Country
-                    </th>
-                    <th>
-                        Mobilenumber
-                    </th>
-                    <th>
-                        State
-                    </th>
-                    <th>
-                        Join Date
-                    </th>
-                    <th>
-                        Department Name
-                    </th>
-
-
-                </tr>
-
-                <!--for loop in ejs to display all data processed from database-->
-                <%for(var i=0;i<data.length;i++){%>
-                <tr>
-
-                    <td>
-                        <input type="checkbox" name="email" value=<%=data[i].email%>> <%=data[i].email%>
-                    </td>
-                    <td>
-                        <%=data[i].Fname%>
-                    </td>
-                    <td>
-                        <%=data[i].country%>
-                    </td>
-                    <td>
-                        <%=data[i].birthdate%>
-                    </td>
-                    <td>
-                        <%=data[i].country%>
-                    </td>
-                    <td>
-                        <%=data[i].mobilenumber%>
-                    </td>
-                    <td>
-                        <%=data[i].state%>
-                    </td>
-                    <td>
-                        <%=data[i].joindate%>
-                    </td>
-                    <td>
-                        <%=data[i].department_name%>
-                    </td>
-
-
-                </tr>
-
-                <%}%>
+                <table style="text-align:center">
+                    <hr>
+                    <b style="text-align:center;font-size: 2em;"> Select The emails and send mail</b><hr></br></br>
     
-</table>
-<textarea class="as" required cols="40" name="text" value="">Enter Text:</textarea><br></br><br></br>
-<button class=" signup-button" type="submit">sendmail </button>
-</form>
+                    <tr>
+                        <th>
+                            Email id
+                        </th>
+                        <th>
+                            Fname
+                        </th>
+                        <th>
+                            Lname
+                        </th>
+                        <th>
+                            Birthdate
+                        </th>
+                        <th>
+                            Country
+                        </th>
+                        <th>
+                            Mobile Number
+                        </th>
+                        <th>
+                            State
+                        </th>
+                        <th>
+                            Join Date
+                        </th>
+                        <th>
+                            Department Name
+                        </th>
+    
+    
+                    </tr>
+    
+                    <!--for loop in ejs to display all data processed from database-->
+                    <%for(var i=0;i<data.length;i++){%>
+                    <tr>
+    
+                        <td>
+                            <input type="checkbox" name="email" value=<%=data[i].email%>> <%=data[i].email%>
+                        </td>
+                        <td>
+                            <%=data[i].Fname%>
+                        </td>
+                        <td>
+                            <%=data[i].country%>
+                        </td>
+                        <td>
+                            <%=data[i].birthdate%>
+                        </td>
+                        <td>
+                            <%=data[i].country%>
+                        </td>
+                        <td>
+                            <%=data[i].mobilenumber%>
+                        </td>
+                        <td>
+                            <%=data[i].state%>
+                        </td>
+                        <td>
+                            <%=data[i].joindate%>
+                        </td>
+                        <td>
+                            <%=data[i].department_name%>
+                        </td>
+    
+    
+                    </tr>
+    
+                    <%}%>
+        
+    </table>
+    <textarea class="button-b" required cols="40" name="text" value="">Enter Text:</textarea><br></br><br></br>
+    <button class=" signup-button" type="submit">sendmail </button>
+    </form>
+
+        
+      
 </div>
     <script>
         /*function to close nav*/

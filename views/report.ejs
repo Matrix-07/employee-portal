@@ -1,23 +1,14 @@
-<!--This template send mail to employees registered in an organization.-->
+<!--Rhis apge displas all the reports recorded -->
 <html>
 
 <head>
     <!--links for font awesome and external style sheet-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="assets/style.css" rel="stylesheet" type="text/css" />
-</head>
-
-<body>
-
+    <title>Employee Portal</title>
     <style>
         /*internal style sheet*/
-        table,
-        th,
-        tr,
-        td {
-            border-collapse: collapse;
-            border: 2px solid black
-        }
+       
 
         table {
 
@@ -26,6 +17,11 @@
 
         }
     </style>
+</head>
+
+<body>
+
+
 
     <!-- Header Of each page with social icons at right-->
     <div class="header-container">
@@ -55,20 +51,18 @@
         <a href="addemployee">Add Employee</a>
         <a href="getleave">Get leaves</a>
         <a href="searchemployee">Search Employee</a>
+        <a href="sendmail">Sendmail</a>
         <a href="temp_mail">Send Temprorary Email</a>
         <a href="report">Reports</a>
-        <a href="sendmail">Sendmail</a>
+       
 
         <a href="logout">Logout</a>
     </div>
 
-    <!--this form element displayes employees in database.
-it has checkbox before each email and textarea at the bottom.
-admin can check box the employees to send mail and can enter description in textarea bottom.
-after submiiting form will send mail to employees whose email is checked
--->
+   <!--display recorded reports-->
     <div class="main ">
-        <b style="text-align:center;font-size: 2em;"> Recorded Reports</b></br></br>
+        <hr>
+        <b style="text-align:center;font-size: 2em;"> Recorded Reports</b><hr></br></br>
         <div class="k" id="employee-data">
 
             <table style="text-align:center">

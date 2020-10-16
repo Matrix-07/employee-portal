@@ -314,8 +314,9 @@ var x = function (app) {
 
   /*this will send log in formation to employees .email and password
 Employee can login only after receiving login information*/
-  app.post("/emp_emails", function (req, res) {
+  app.post("/emp_emails", urlencodedParser, function (req, res) {
     var path = req.path;
+    var list=[];
     if (req.session.email == "admin@example.com") {
       emp_emails.find({}, function (err, data) {
         if (err) {
@@ -323,33 +324,85 @@ Employee can login only after receiving login information*/
           res.render("error", { path, text });
         } else {
           var length1 = data.length;
-
+          var doc_length = 0;
           for (let i = 0; i < length1; i++) {
-            let b = "" + Math.floor(Math.random() * 1000000 + 54);
-            sendmail(data[i].email, b);
-            emp_emails.updateOne(
-              { email: data[i].email },
-              { $set: { passw: b } },
-              function (err, data1) {
-                var data2 = { email: data[i].email, pass: b };
-
-                let mydata = new employee(data2);
-                mydata
-                  .save()
-                  .then(() => {
-                    let text = "Mail sent and item saved to database";
-                    res.render("error", { path, text });
-                  })
-                  .catch((err) => {
-                    let text = "unable to save to database";
-                    res.render("error", { path, text });
-                  });
+            
+            employee.find({ email: data[i].email }, function (err, data3) {
+              if (err) {
+                let text = "An Error Occured.Please Try again";
+                res.render("error", { path, text });
               }
-            );
+              else {
+
+                doc_length = doc_length + data3.length;
+                if (i == length1 - 1) {
+
+                  if (doc_length > 0) {
+                    let text = " some Employee already exists.Remove duplicate employees";
+
+                    res.render("error", { path, text });
+                  }
+                  else {
+                    for (let j = 0; j < length1; j++) {
+                     
+                      let b = "" + Math.floor(Math.random() * 1000000 + 54);
+                      sendmail(data[j].email, b);
+                  
+                      var data2 = { email: data[j].email, pass: b };
+                      list[j]=data2;
+                      emp_emails.updateOne(
+                        { email: data[j].email },
+                        { $set: { passw: b } },
+                        function (err, data1) {
+                          if(err){
+                            let text = err;
+                            res.render("error", { path, text });
+                          }
+                          else{
+                           
+                            
+                          if(j==length1-1)
+                          {
+
+                            employee.insertMany(list,function(err,data){
+                                if(err){
+                                  let text = "An Error occured.Try again";
+                                  res.render("error", { path, text });
+                                }
+                                else{
+                                  let text = "Mail sent and item saved to database";
+                                  res.render("error", { path, text });
+                                }
+                            })
+                          /*  let mydata = new employee(list);
+                            mydata
+                              .save()
+                              .then(() => {
+                                let text = "Mail sent and item saved to database";
+                                res.render("error", { path, text });
+                              })
+                              .catch((err) => {
+                                let text = "unable to save to database";
+                                res.render("error", { path, text });
+                              });*/
+                          }
+                          
+                          }
+                         
+                        })
+                    }
+
+                  }
+
+                }
+              }
+            })
+
           }
         }
-      });
-    } else {
+      })
+    }
+    else {
       res.redirect("/");
     }
   });
@@ -392,18 +445,37 @@ Employee can login only after receiving login information*/
     var path = req.path;
     /**only admin can insert so admin session is created else redirected to login page */
     if (req.session.email == "admin@example.com") {
-      var mydata = new employee(req.body);
 
-      mydata
-        .save()
-        .then(() => {
-          let text = "item saved to database";
+      employee.find({ email: req.body.email }, function (err, data) {
+        if (err) {
+          let text = "Please try again";
           res.render("error", { path, text });
-        })
-        .catch((err) => {
-          let text = "unable to save to database";
-          res.render("error", { path, text });
-        });
+        }
+        else {
+          if (data.length > 0) {
+            let text = "Employee already exists.Changes could not be made";
+            res.render("error", { path, text });
+          }
+          else {
+            var mydata = new employee(req.body);
+
+            mydata
+              .save()
+              .then(() => {
+                let text = "item saved to database";
+                res.render("error", { path, text });
+              })
+              .catch((err) => {
+                let text = "unable to save to database";
+                res.render("error", { path, text });
+              });
+          }
+
+
+        }
+
+      })
+
     } else {
       res.redirect("/");
     }
@@ -489,14 +561,30 @@ Employee can login only after receiving login information*/
           if (length == 0) {
             res.render("searchemployee", { data, length, path });
           } else
-          /**get department id of employee */
+            /**get department id of employee */
             department.find(
               { department_name: data1[0]._doc.department_name },
               function (err, data4) {
                 {
-                  var data = Object.assign({}, data1[0]._doc, data4[0]._doc);
+                  if(err){
+                    let text = err;
+                    res.render("error", { path, text });
 
-                  res.render("searchemployee", { data: data, length, path });
+                  }
+                  else{
+                    if(data4.length>0){
+                      var data = Object.assign({}, data1[0]._doc, data4[0]._doc);
+
+                      res.render("searchemployee", { data: data, length, path });
+                    }
+                    else{
+                      var data = Object.assign({}, data1[0]._doc);
+
+                    res.render("searchemployee", { data: data, length, path });
+                    }
+                    
+                  }
+                  
                 }
               }
             );

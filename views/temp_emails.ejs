@@ -5,15 +5,11 @@
   <!--links for font awesome and external style sheet-->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link href="assets/style.css" rel="stylesheet" type="text/css" />
-</head>
-
-<body>
-
+  <title>Employee Portal</title>
   <style>
     /*internal style sheet*/
     table,
     th,
-    tr,
     td {
       position: relative;
       left: 0;
@@ -22,8 +18,16 @@
       border-collapse: collapse;
       border: 2px solid black
     }
+    table{
+      width:40%;
+    }
   </style>
 
+</head>
+
+<body>
+
+ 
   <!-- Header Of each page with social icons at right-->
   <div class="header-container">
 
@@ -62,7 +66,8 @@
     <!--table to display all the emploee with values  and log in information will be sent to each one of them-->
     <form method="POST" action="/emp_emails"></br></br>
       <table style="text-align:center">
-        <b style="text-align:center;font-size: 2em;"> Employees Mails</b></br></br></br></br>
+        <hr>
+        <b style="text-align:center;font-size: 2em;"> Employees Mails</b><hr></br></br></br></br>
 
         <tr>
           <th>

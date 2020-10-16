@@ -3,23 +3,29 @@
 <!--links for font awesome and external style sheet-->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link href="assets/style.css" rel="stylesheet" type="text/css" />
-
+<title>Employee Portal</title>
 <head>
   <meta name="viewport" content="width=device-width">
   <style>
     /*internal style sheet*/
+ 
+
+
+  
     input {
 
-      border: 0px;
-      border-bottom: 2px solid black;
-      width: 450px;
+            border: 0px;
+            border-bottom: 2px solid black;
+            min-width: 280px;
+            font-size: 25px;
 
-    }
+        }
 
-
-    #department-selection {
-      display: none;
-    }
+        button{
+            position: relative;
+            right: 200px;
+        }
+      
   </style>
 
 </head>
@@ -70,37 +76,89 @@
     <a href="contact">Contact</a>
     <a href="logout">Logout</a>
   </div>
-
-  <div class="main">
-    <!--I will displaythe details of the user-->
-    <div class="profile-container">
-
-
-
-      <form action="updateProfile" method="POST" id="myform">
-        <a href="editProfile" id="update-profile-link">
-          <div class="edit-profile-button">Edit Profile</div>
-        </a><br>
-        <div class="profile-font">
-
-
-          First Name:&nbsp;&nbsp;&emsp;&emsp;&nbsp;<input class="profile-font" type="text" name="Fname"
-            value="<%=data.Fname%>" readonly></br></br>
-          Last Name:&nbsp;&nbsp;&emsp;&emsp;&nbsp;&nbsp;<input class="profile-font" type="text" name="Lname"
-            value="<%-data.Lname%>" readOnly></br></br>
-          Birth Date:&nbsp;&nbsp;&nbsp;&emsp;&emsp;&nbsp;<input class="profile-font" type="date"
-            value="<%=data.birthdate%>" name="birthdate" readOnly></br></br>
-
-          Country:&nbsp;&nbsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;<input class="profile-font" type="text"
-            value="<%=data.country%>" name="country" readOnly></br></br>
-          State:&nbsp;&nbsp;&emsp;&nbsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;<input class="profile-font" type="text"
-            value="<%=data.state%>" name="state" readOnly></br></br>
-          Email-Id:&nbsp;&nbsp;&nbsp;&nbsp; &emsp;&emsp;&nbsp;&nbsp;<input class="profile-font" type="text"
-            value="<%=data.email%>" name="email" readOnly></br></br>
-          Join Date:&nbsp;&nbsp;&nbsp;&emsp;&emsp;&emsp;<input class="profile-font" type="date" readOnly name="joindate"
-            value="<%=data.joindate%>" required></br></br>
-          Department:&nbsp;&nbsp;&emsp;&emsp;<input class="profile-font" id="dept" readOnly type="text"
-            value="<%=data.department_name%>"><select class="department-border1" onclick="checkdepartment()"
+  
+   
+ 
+  
+    <div class="main">
+      <hr>
+      <b style="text-align:center;font-size: 2em;"> Profile</b><hr></br></br>
+  <a href="editProfile" id="update-profile-link">
+    <div class="edit-profile-button">Edit Profile</div>
+  </a><br>
+  <form method="post" action="/updateProfile" id="myform">
+    <button type="submit" id="edit-update-button" class="edit-update-button" style="display: none;">Update</button>
+<div class="main1">
+   
+    <div class="main1-a">
+        <ol>
+            <li>
+                First Name :
+            </li></br>
+            <li>
+                Last Name :
+            </li></br>
+            <li>
+                Email :
+            </li></br>
+            <li>
+               Birth date :
+            </li></br>
+            
+             <li>
+               Country :
+             </li></br>
+             <li>
+                 Join Date:
+             </li></br>
+             <li>
+               Department :
+              </li></br></br>
+              <li>
+                State :
+              </li></br>
+            <li>
+                Mobile Number :
+            </li></br>
+            
+            </ol>
+    </div>
+   
+    <div class="main1-b">
+        
+        <ol>
+            <li>
+                &emsp;<input type="text" id="firstname" readonly name="Fname" value="<%=data.Fname%>"
+                    placeholder="John" required> 
+            </li></br>
+            <li>
+                &emsp;<input type="text" id="lastname" readonly name="Lname" value="<%=data.Lname%>"
+                    placeholder="Doe" required>
+                
+            </li></br>
+            <li>
+                &emsp;&emsp;<input name="email" id="email" readonly value="<%=data.email%>" type="email"
+                placeholder="xyz@gmail.com" required>&emsp;
+            </li></br>
+            <li>
+                <input type="date" class="date-width "
+                id="birthday" placeholder="birthday" readonly name="birthdate" value="<%=data.birthdate%>" required>
+            
+            </li></br>
+          
+            <li>
+              &emsp; <input  type="text"
+              value="<%=data.country%>" readonly  name="country" readOnly>
+            </li></br>
+            <li>
+            <input type="date" id="joindate" readonly class="date-width"
+                    placeholder="join date" name="joindate" value="<%=data.joindate%>" required>
+               
+            </li></br>
+            <li>
+              &emsp;    <input  id="dept" readOnly type="text"
+            value="<%=data.department_name%>">
+            <select class="dept-sel" onclick="checkdepartment()"
             name="department_name" id="department-selection" size="1">
             <option name="dept">Human Resource</option>
             <option name="dept">Marketing</option>
@@ -109,17 +167,28 @@
             <option name="dept">General</option>
             <option name="dept">Operations</option>
             <option name="dept">Purchase</option>
-          </select></br></br>
-          Mobile Number:&nbsp;&nbsp; &nbsp;<input readOnly class="profile-font" type="text"
-            value="<%=data.mobilenumber%>" name="mobilenumber" readOnly></br></br>
-
-          <button type="submit" id="edit-update-button" class="edit-update-button">Update</button>
-        </div>
-      </form>
-
+          </select>
+            </li></br></br>
+            <li>
+                &emsp; <input type="text" readonly id="state" placeholder="State"
+                    name="state" value="<%=data.state%>" required>
+                
+            </li></br>
+            <li>
+                &emsp;<input type="tel" readonly placeholder="Mobilenumber"
+                    id="mobilenumber" name="mobilenumber" value="<%=data.mobilenumber%>" required>
+               
+            </li></br>
+            
+            </ol>
     </div>
+    
+</form>
+</div>
 
-  </div>
+
+</div>
+
 
   <script>
 
@@ -143,14 +212,16 @@
       let edit_profile_button = document.getElementById("update-profile-link").style;
       edit_profile_button.display = "none";
 
-      let inputs = document.getElementsByClassName("profile-font");
+      let inputs = document.getElementsByTagName("input");
 
       let update_button = document.getElementById("edit-update-button").style;
       update_button.display = "block";
 
       let disply_departemnt_selection = document.getElementById("department-selection").style;
       disply_departemnt_selection.display = "block";
-      disply_departemnt_selection.left = "395px";
+      disply_departemnt_selection.left = "405px";
+     
+      disply_departemnt_selection.bottom = "33px";
       /*Email are unique so can't be modified*/
       for (let i = 0; i < inputs.length; i++) {
 
@@ -158,7 +229,8 @@
           inputs[i].readOnly = false;
 
       }
-
+document.getElementById("state").style="position:relative;bottom:26px";
+document.getElementById("mobilenumber").style="position:relative;bottom:26px";
 
     }
     //select the department name from select tag and display
@@ -167,12 +239,12 @@
       let d = document.getElementById("department-selection");
       let dept = document.getElementsByName("dept");
       let selected_dept = d.options[d.selectedIndex].text;
-
-      f[0].value = selected_dept;
+      
       let input_dept = document.getElementById("dept");
-      input_dept.setAttribute("value", f[0].value);
+      input_dept.setAttribute("value", selected_dept);
       /*i=  f[0].value();*/
-      document.getElementById("department-selection").value = f[0].value();
+      
+      document.getElementById("department-selection").value = selected_dept;
 
 
     }

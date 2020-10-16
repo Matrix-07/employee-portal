@@ -7,29 +7,11 @@
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link href="assets/style.css" rel="stylesheet" type="text/css" />
-
-</head>
-
-<body>
-
-
+  <title>Employee Portal</title>
   <style>
     /*syle sheet*/
     /*footer*/
-    footer {
-      background-color: #000;
-      color: #9b9b9b;
-      font-size: 12px;
-      position: relative;
-      padding: 50px 0;
-      width: 100%;
-
-      display: flex;
-      flex-direction: row;
-      text-align: center;
-      flex-wrap: wrap;
-
-    }
+  
 
     input {
       color: teal;
@@ -39,14 +21,18 @@
       width: 250px;
 
     }
-
-    .footer-box1 {
-
-      height: 100%;
-      width: 20%;
-      border: 2px solid white;
-    }
+img{
+  height:100%;
+  width:100%
+}
+  
   </style>
+
+</head>
+
+<body>
+
+
   <!-- Header Of each page with social icons at right-->
   <div class="header-container">
 
@@ -62,9 +48,12 @@
       </div>
     </div>
   </div>
-
+<div class="main">
   <div class="logger-container">
-    <img class="logger-img" src="/assets/images/bg_1.jpg" alt="hg">
+    <div class="logger-img">
+<img  src="/assets/images/about-1.jpg" alt="hg">
+    </div>
+    
 
     <div class="logger_form ">
       <!--Login form-->
@@ -88,12 +77,35 @@
   <footer>
 
   </footer>
+</div>
   <script>
     var d = new Date();
     var currentYear = d.getFullYear();
 
     var footer = document.getElementsByTagName("footer");
-    footer[0].innerHTML = "<b style='font-size:2em'>We create possibilities for the connected world<br><small>&copy; Copyright " + currentYear + ", Example Corporation</small></b>";
+    footer[0].innerHTML = "<b style='font-size:2em'>We create possibilities for the connected world<br><small>&copy; Copyright " + currentYear + ", IT Solutions Corporation</small></b>";
+    var img=document.getElementsByTagName("img")[0];
+    var i=0;
+    var k="/assets/images/about-1.jpg";
+
+  function imgc(c){
+    if(c%2==0){
+      k="/assets/images/about-1.jpg";
+    }
+    else{
+      k="/assets/images/bg_1.jpg";
+    }
+    setTimeout(function(){
+img.setAttribute("src",k)
+c++;
+imgc(c)
+
+    },2000)
+
+  }
+  imgc(0)
+  
+   
   </script>
 
 </body>

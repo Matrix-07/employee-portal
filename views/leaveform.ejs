@@ -7,6 +7,26 @@
   <!--links for font awesome and external style sheet-->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link href="assets/style.css" rel="stylesheet" type="text/css" />
+  <title>Employee Portal</title>
+  <style>
+   
+  
+  
+    input,select{
+  
+  border: 0px;
+  border-bottom: 2px solid black;
+  min-width: 280px;
+  font-size: 25px;
+  
+  }
+ 
+  .button1-a{
+    position: relative;
+    bottom: 40px;
+  }
+  
+  </style>
 </head>
 
 <body>
@@ -74,8 +94,10 @@
           2)new leave form div will be displaed
   -->
   </div>
-  <div class="main">
-    <div class="leaveform-box" id="previousleave">
+
+
+  <div class="main" style="min-height:120%;">
+    <div  id="previousleave">
       <hr>
       <h1 style="text-align:center"> Previously Applied Leaves</h1>
       <hr>
@@ -134,44 +156,71 @@
         </table>
       </h1>
       <br>
-      <br>
-      <br>
+      
 
     </div>
 
+          <div id="leaveform"> 
+            <hr><b style="color:black;font-size: 2em;">New leave application Form</b>
+            <hr>
+            <form method="post" action="leavestatus" id="myform">
+         
+    <div   class="main1">
+      
+      <div class="main1-a">
+          <ol>
+              <li>
+                  From Date :
+              </li></br>
+              <li>
+                  To date :
+              </li></br>
+              <li>
+                  Leave type:
+              </li></br>
+              <li>
+                Remarks:
+              </li></br>
 
-
-    <div id="leaveform">
-      &nbsp;&emsp;
-      <div class="leaveform-box">
-        <hr><b style="color:black">New leave application Form</b>
-        <hr>
-
-        <form method="post" action="leavestatus"><br><br>
-
-          From date:<input class="leave-border" type="date" required name="fromdate" required value=""><br><br><br>
-
-          To date:&nbsp;&emsp;<input class="leave-border" type="date" required name="todate" required
-            value=""><br><br><br>
-
-          Leave type:<select class="leave-border" onclick="checkleave()" required name="leavetype" id="leave-type"
-            value="" required size="1">
-            <option name="leave">Earned Leave</option>
-            <option name="leave">Sick Leave</option>
-            <option name="leave">Casual Leave</option>
-
-          </select><br><br><br>
-
-          Remarks:&emsp;<textarea class="leave-border" required cols="100" name="remarks" value=""></textarea>
-          <br><br><br>
-          &nbsp;&emsp;&nbsp;&emsp;&nbsp;&emsp;&nbsp;&emsp; <button class="button1" type="submit">Submit Leave
-            Request</button><br><br><br>
-
-
+              </ol>
       </div>
-
-
-    </div>
+     
+      <div class="main1-b">
+          
+          <ol>
+              <li>
+                <input  type="date" required name="fromdate" required value="">
+              </li></br>
+              <li>
+                 
+                <input  type="date" required name="todate" required
+                value="">
+              </li></br>
+              <li>
+                <select onclick="checkleave()" required name="leavetype" id="leave-type"
+                value="" required size="1">
+                <option name="leave">Earned Leave</option>
+                <option name="leave">Sick Leave</option>
+                <option name="leave">Casual Leave</option>
+    
+              </select>
+              </li></br>
+              <li>
+                <textarea  required cols="40" name="remarks" value=""></textarea>
+              
+              </li>
+             
+              </ol>
+      </div>
+     
+ 
+  
+</div>
+<button class="button1 button1-a" type="submit">Submit Leave
+  Request</button>
+</form>
+</div></div>
+</body>
     <script>
       var k;
       function checkleave() {

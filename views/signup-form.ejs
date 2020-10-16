@@ -4,28 +4,48 @@
     <!--links for font awesome and external style sheet-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="assets/style.css" rel="stylesheet" type="text/css" />
-
-</head>
-
-<body>
+    <title>Employee Portal</title>
     <style>
         /*internal style sheet*/
-        .x {
-            position: relative;
-            top: 40px;
-        }
-
+      #department-selection{
+       
+          display: inline;
+    
+      }
+    
+      .main1{
+         min-height: 900px;
+       justify-content: center;
+        
+        
+      }
+      .main1-a,.main1-b{
+          min-height: 1000px;
+        justify-content: center;
+     
+      }
 
         input,
         select {
 
             border: 0px;
             border-bottom: 2px solid black;
-            width: 280px;
+            min-width: 280px;
             font-size: 25px;
 
         }
+        button{
+            position: relative;
+            
+        }
+
+     
     </style>
+
+</head>
+
+<body>
+  
     <!-- Header Of each page with social icons at right-->
     <div class="header-container">
 
@@ -49,40 +69,105 @@
         <a href="getemployees">Get Employees</a>
         <a href="addemployee">Add Employee</a>
         <a href="getleave">Get leaves</a>
+        <a href="searchemployee">Search Employee</a>
         <a href="sendmail">Sendmail</a>
         <a href="temp_mail">Send Temprorary Email</a>
-        <a href="searchemployee">Search Employee</a>
+      
         <a href="report">Reports</a>
         <a href="logout">Logout</a>
     </div>
+   
     <!--Sign up form to rigister new employee with proper css-->
-    <div class="profile-container">
-        <form method="get" action="/">
+    <div class="main">
+        <hr>
+        <b style="font-size: 2em;">Add Employee Details</b><br><hr>
+    
+    <firstname style="color:red"></firstname>  
+      <lastname style="color:red"></lastname>
+      <birthday style="color:red"></birthday>
+      <email style="color:red"></email>
+      <pass style="color:red"> </pass>
+      <state style="color:red"></state>
+      <confirmpass style="color:red"></confirmpass>
+      <mobilenumber style="color:red"></mobilenumber>
+      <joindate style="color:red"></joindate>
+<form method="post" action="/insert">
 
-            <%message=""%>
-            <!--his message displays if there is an error in password or email after signup and 
-                reports an error after validating form-->
+<div class="main1">
+    
 
-            <div class="profile-font x">
-
-                First Name :&emsp;&emsp;&emsp;&emsp;&emsp;<input type="text" id="firstname" name="Fname" value=""
-                    placeholder="John" required>
-                <firstname style="color:red"></firstname></br></br>
-                Last Name: &emsp;&emsp;&emsp;&emsp; &emsp;<input type="text" id="lastname" name="Lname" value=""
+    <div class="main1-a">
+        <ol>
+            <li>
+                First Name :
+            </li></br>
+            <li>
+                Last Name :
+            </li></br>
+            <li>
+                Email :
+            </li></br>
+            <li>
+               Birth date :
+            </li></br>
+            <li>
+                Password :
+             </li></br>
+             <li>
+                Confirm Password :
+             </li></br>
+             <li>
+               Country :
+             </li></br>
+             <li>
+                 Join Date:
+             </li></br>
+             <li>
+               Department :
+              </li></br>
+              <li>
+                State :
+              </li></br>
+            <li>
+                Mobile Number :
+            </li></br>
+            
+            </ol>
+    </div>
+   
+    <div class="main1-b">
+        
+        <ol>
+            <li>
+                &emsp;<input type="text" id="firstname" name="Fname" value=""
+                    placeholder="John" required> 
+            </li></br>
+            <li>
+                &emsp;<input type="text" id="lastname" name="Lname" value=""
                     placeholder="Doe" required>
-                <lastname style="color:red"></lastname></br></br>
-                Email :&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; <input name="email" id="email" value="" type="email"
-                    placeholder="xyz@gmail.com" required>&emsp;<email style="color:red"></email></br></br>
-                Birth Date:&nbsp;&nbsp;&emsp; &emsp;&emsp;&emsp;&emsp;<input type="date" class="date-width "
-                    id="birthday" placeholder="birthday" name="birthdate" value="" required>
-                <birthday style="color:red"></birthday></br></br>
-                Password:&emsp; &emsp;&emsp;&emsp;&emsp;&emsp;<input type="password" placeholder="password"
+            
+            </li></br>
+            <li>
+                &emsp; &emsp;<input name="email" id="email" value="" type="email"
+                placeholder="xyz@gmail.com" required>&emsp;
+            </li></br>
+            <li>
+               <input type="date" class="date-width "
+                id="birthday" placeholder="birthday" name="birthdate" value="" required>
+           
+            </li></br>
+            <li>
+               &emsp;<input type="password" placeholder="password"
                     id="firstpassword" name="pass" value="" required>
-                <pass style="color:red"> </pass></br></br>
-                Confirm Password:&emsp; &nbsp;&emsp;<input type="password" placeholder="password" id="confirmpassword"
-                    name="confirmpass" value="" required>
-                <confirmpass style="color:red"></confirmpass></br></br>
-                Country:&emsp; &emsp;&nbsp;&nbsp;&nbsp;&nbsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;<select
+               
+            </li></br>
+            <li>
+                &emsp;<input type="password" placeholder="password" id="confirmpassword"
+                name="confirmpass" value="" required>
+           
+            </li></br>
+            <li>
+                &nbsp;<select
                     onclick="checkcountry()" name="country" id="country-selection" value="" size="1">
                     <option value="country">India</option>
                     <option name="country">USA</option>
@@ -90,12 +175,17 @@
                     <option name="country">Italy</option>
                     <option name="country">spain</option>
                     <option name="country">nepal</option>
-                </select></br></br>
-                Join Date:&emsp; &emsp;&emsp;&emsp;&emsp;&emsp;<input type="date" id="joindate" class="date-width"
+                </select>
+            </li></br>
+            <li>
+                <input type="date" id="joindate" class="date-width"
                     placeholder="join date" name="joindate" value="" required>
-                <joindate style="color:red"></joindate></br></br>
-                Department:&emsp; &emsp;&emsp;&emsp;&emsp;<select onclick="checkdepartment()" name="department_name"
-                    id="department-selection" value="" size="1" required>
+                
+            </li></br>
+            <li>
+                <select
+               onclick="checkdepartment()" name="department_name"
+                    id="department-selection"  value="" size="1" required>
                     <option name="dept">Human Resource</option>
                     <option name="dept">Marketing</option>
                     <option name="dept">Sales</option>
@@ -103,21 +193,33 @@
                     <option name="dept">General Management</option>
                     <option name="dept">Operations</option>
                     <option name="dept">Purchase</option>
-                </select></br></br>
-                State:&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<input type="text" id="state" placeholder="State"
+                </select>  
+            </li></br>
+            <li>
+                &emsp;<input type="text" id="state" placeholder="State"
                     name="state" value="" required>
-                <state style="color:red"></state></br></br>
-                Mobile Number:&nbsp;&nbsp;&emsp;&emsp;&emsp;<input type="tel" placeholder="Mobilenumber"
+               
+            </li></br>
+            <li>
+                &emsp;<input type="tel" placeholder="Mobilenumber"
                     id="mobilenumber" name="mobilenumber" value="" required>
-                <mobilenumber style="color:red"></mobilenumber></br></br>
-                <button onclick="return checkvalidation()" class="signup-button" name="Firstuser" value="signedup"
-                    type="submit">Add Employee</button></br></br>
-            </div>
-        </form>
+               
+            </li></br>
+            
+            </ol>
     </div>
+   
 
 
 
+</div>
+
+    <button onclick="return checkvalidation()" class="signup-button"  value="signedup"
+    type="submit">Add Employee</button>
+
+
+</form>
+</div>
 
     <script>
         var k, i;
@@ -168,6 +270,7 @@
                     }
                 }
             }
+
             return false;
         }
         /*it validates first name that it should contyain only alphabets else report an error*/

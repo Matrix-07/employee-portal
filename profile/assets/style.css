@@ -1,18 +1,26 @@
 .main{
   background-color: #659dbd ;
+ position: absolute;
   text-align: center;
-            width: 100%;
+        width: 100%;
+            top:71px;
+         
             min-height: 100%;
 }
+
+
+
 .header-container {
-  
+  position:absolute;
   display: flex;
   align-items: center;
   height: 70px;
+  
   background-color: teal;
   width: 100%;
   overflow: hidden;
-  flex-wrap: wrap;
+
+ 
 }
 #nodata{
   position: relative;
@@ -42,18 +50,19 @@
   display: flex;
 
   overflow: hidden;
-  background-color: #659dbd;
+  
 }
 .logger-img {
   position: relative;
 
   width: 60%;
-  height: 100%;
+  
+  
 }
 .logger_form {
   position: relative;
-  top: 50px;
-  left: 50px;
+  top: 70px;
+  left: 10px;
 font-size:25px;
   height: 455px;
   padding: 5px;
@@ -225,46 +234,30 @@ font-size:25px;
 }
 
 .edit-profile-button {
+  
   position: relative;
-  top: 10px;
-  left: 140%;
-
+  top: 20px;
+  left: 80%;
   height: 25px;
   width: 80px;
   border: 2px solid black;
   background-color: turquoise;
   padding: 6px;
   text-align: center;
+ 
 }
-.edit-update-button {
-  position: relative;
-  display: none;
-  top: 10px;
-  left: 12rem;
-  height: 35px;
-  width: 80px;
-  border: 2px solid black;
-  background-color: skyblue;
-  padding: 6px;
-  text-align: center;
-}
-.profile-font {
-  font-size: 25px;
-  font-weight: bolder;
-  font-family: "Times New Roman", Times, serif;
-  font-style: italic;
-  position: relative;
-  margin: auto;
-  left: 200px;
-}
-.profile-container {
-  background-color: #659dbd;
-  position: relative;
 
-  display: flex;
-}
+
+
 table {
   text-align: center;
+}
+table{
+  table-layout: fixed;
+  width: 99%;
+}
+th,td{
+  word-wrap: break-word;
 }
 table,
 th,
@@ -295,7 +288,7 @@ font-weight: bold;
 }
 .resetpassword-body {
   position: relative;
-  top: 40%;
+
   left: 30%;
 font-size:28px;
   width: 40%;
@@ -340,9 +333,9 @@ font-size:28px;
 
 .edit-update-button {
   position: relative;
-  top: 6em;
-  left: 12rem;
-  height: 25px;
+  top:20px;
+  left: 70%;
+  height: 35px;
   width: 80px;
   border: 2px solid black;
   background-color: skyblue;
@@ -367,11 +360,12 @@ a {
   position: relative;
   top: 5px;
   font-size: 15px;
+
 }
 
 .card:hover {
   box-shadow: 0 8px 16px 0 rgba(122, 7, 230, 0.2);
-  transform: scale(1.1);
+ 
 }
 
 
@@ -380,7 +374,7 @@ a {
   color: #000000;
 
   font-size: 30px;
-  width: 50px;
+  width: 40px;
   padding: 20px;
   text-decoration: none;
 }
@@ -390,14 +384,19 @@ a {
 }
 .social-icons {
   position: absolute;
-  top: 10px;
+ bottom: 5px;
+  
+ display: flex;
+
+ flex-wrap: wrap-reverse;
   left: 60%;
+
 }
 .contact{
   display:flex;
-  
+  width: 94%;
   flex-direction:row;
-  
+  flex-wrap: wrap;
   position: relative;
   top:30px;
   padding:10px;
@@ -406,7 +405,7 @@ a {
             }
             .contact-container{
               margin:20px;
-              font-weight: bolder;
+              font-weight: 2em;
             }
             .card1{
     width: 20%;
@@ -437,6 +436,7 @@ a {
   .box3{
     height: 10px;
     background-color:blueviolet;
+  
   }
   .button1{
     position: relative;
@@ -446,5 +446,84 @@ a {
     border:2px solid black;
     background-color: burlywood;
     cursor: pointer;
+
+  }
+
+  #department-selection {
+    display: none;
+  }
+  firstname,lastname,email,birthday,pass,confirmpass,joindate,state,mobilenumber{
+    font-size:20px;
+    word-break: normal;
+}
+.fa-search {
+  position: relative;
+  top: 10px;
+  right: 5px;
+  border: 0px;
+  height: 45px;
+  padding: 10px;
+}
+
+.main1{
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  top:30px;
+  justify-content: center;
+  min-height:150%;
+  width:100%;
+  
+  background-color:#659dbd ;
+  flex-wrap: wrap;
+  
+  }
+  .main1-a,.main1-b{
+  font-size: 40px;
+  font-weight: bolder;
+  font-family: "Times New Roman", Times, serif;
+  font-style: italic;
+  min-width: 300px;
+  min-height: 100%;
+  display: flex;
+  justify-content: left;
+  
+  padding-bottom:40px;
+  }
+  .main1-b{
+    width:65%;
+   
+}
+li{
+  list-style: none;
+}
+
+.button-b{
+  position: relative;
+  top: 40px;
+
+}
+  .dept-sel{
+    position: relative;
+
+
+border: 2px solid black;
+border-left: 0px;
+
+font-size: 25px;
+  }
+  footer {
+    background-color: #000;
+    color: #9b9b9b;
+    font-size: 12px;
+    position: relative;
+    padding: 50px 0;
+    width: 100%;
+
+height: 100%;
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    flex-wrap: wrap;
 
   }

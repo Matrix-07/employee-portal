@@ -183,7 +183,7 @@ var x = function (app) {
                 });
             } else {
               let text =
-                "Couldnot find The Employeeassociated withdepartment id.Enter correct value ";
+                "Couldnot find The Employee associated with department id.Enter correct employee details ";
               res.render("error", { text, path });
             }
           }
@@ -419,7 +419,7 @@ Employee can login only after receiving login information*/
   });
   /**to update the leave applied */
   app.get("/updateleave", function (req, res) {
-    if (req.session.leave) {
+    if (req.session.email) {
       var data = req.query;
       /**update and make changes to database */
       leaves.updateOne(

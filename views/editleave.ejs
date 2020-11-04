@@ -13,6 +13,22 @@
 </head>
 
 <body>
+  <style>
+    
+    input,select{
+  
+  border: 0px;
+  border-bottom: 2px solid black;
+  min-width: 280px;
+  font-size: 25px;
+  
+  }
+ 
+  .button1-a{
+    position: relative;
+    bottom: 40px;
+  }
+  </style>
  
   <!-- Header Of each page with social icons at right-->
   <div class="header-container">
@@ -41,41 +57,71 @@
     </div>
 
   </div>
-  <div class="main">
+  <div class="main" style="min-height:120%;">
     <!--It is  leave application form with previous values-->
-    <h1>
-      <div id="leaveform">
+    
+    <div id="leaveform"> 
+      <hr><b style="color:black;font-size: 2em;">Edit leave application Form</b>
+      <hr>
+      <form method="GET" action="updateleave" id="myform">
+   
+<div   class="main1">
+
+<div class="main1-a">
+    <ol>
+        <li>
+            From Date :
+        </li></br>
+        <li>
+            To date :
+        </li></br>
+        <li>
+            Leave type:
+        </li></br>
+        <li>
+          Remarks:
+        </li></br>
+
+        </ol>
+</div>
+
+<div class="main1-b">
+    
+    <ol>
+        <li>
+          <input  type="date" required name="fromdate" required value="<%=data.fromdate%>">
+        </li></br>
+        <li>
+           
+          <input  type="date" required name="todate" required
+          value="<%=data.todate%>">
+        </li></br>
+        <li>
+          <select onclick="checkleave()" required name="leavetype" id="leave-type"
+          value="d" required size="1">
+          <option selected disabled hidden><%=data.leavetype%></option>
+          <option name="leave">Earned Leave</option>
+          <option name="leave">Sick Leave</option>
+          <option name="leave">Casual Leave</option>
+
+        </select>
+        </li></br>
+        <li>
+         <textarea style="font-size:18px;resize: none;" required cols="40" name="remarks" value="<%=data.remarks%>"><%=data.remarks%></textarea>
+        
+        </li>
+       
+        </ol>
+</div>
 
 
-        <div class="leaveform-box">
-          &nbsp;&emsp;&nbsp;&emsp;
-          <hr> Leave Application Form
-          <hr>
-          <form method="get" action="updateleave"><br><br>
 
-            From date:<input class="leave-border" type="date" required name="fromdate"
-              value="<%=data.fromdate%>"><br><br><br>
-
-            To date:&nbsp;&emsp;<input class="leave-border" type="date" required name="todate"
-              value="<%=data.todate%>"><br><br><br>
-
-            Leave type:<select class="leave-border" onclick="checkleave()" required name="leavetype" id="leave-type"
-              value="<%=data.leavetype%>" size="1">
-              <option name="leave">Earned Leave</option>
-              <option name="leave">Sick Leave</option>
-              <option name="leave">Casual Leave</option>
-
-            </select><br><br><br>
-
-            Remarks:&emsp;<textarea class="leave-border" required cols="100" name="remarks"
-              value=""><%=data.remarks%></textarea>
-            <br><br><br>
-            &nbsp;&emsp;&nbsp;&emsp;&nbsp;&emsp;&nbsp;&emsp; <button type="submit">Submit Leave
-              Request</button><br><br><br>
-
-
-        </div>
-    </h1>
+</div>
+<button class="button1 button1-a" type="submit">Submit Leave
+Request</button>
+</form>
+</div>
+    
 
   </div>
 
